@@ -1,0 +1,218 @@
+/* Base styles: variables, reset, typography, utilities (desktop-first) */
+
+/* ------------------------------
+   CSS Custom Properties
+------------------------------ */
+:root {
+  /* brand colors */
+  --color-primary: #592e83; /* primary */
+  --color-accent-1: #caa8f5;
+  --color-accent-2: #9984d4;
+  --color-surface: #faf9fc;
+  --color-bg: #230c33;
+  --color-ink: #0e0a14;
+
+  /* semantic tokens */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --text: var(--color-surface);
+  --ink: var(--color-surface);
+  --link: var(--color-accent-1);
+  --muted-ink: #e6e0ef;
+
+  /* typography */
+  --font-sans: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --fs-900: clamp(3rem, 2.4vw + 2.6rem, 5rem);
+  --fs-800: clamp(2.25rem, 1.6vw + 1.9rem, 3.5rem);
+  --fs-700: 2rem;
+  --fs-600: 1.25rem;
+  --fs-500: 1.125rem;
+  --fs-400: 1rem;
+  --fs-300: 0.875rem;
+
+  /* spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* layout */
+  --container-max: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.18);
+  --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ------------------------------
+   Font Face (local only)
+------------------------------ */
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Regular.woff2") format("woff2"),
+    url("../fonts/Poppins/Poppins-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-SemiBold.woff2") format("woff2"),
+    url("../fonts/Poppins/Poppins-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------
+   Modern Reset
+------------------------------ */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-400);
+  line-height: 1.6;
+  color: var(--surface);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ------------------------------
+   Base Elements
+------------------------------ */
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: var(--fs-900);
+  line-height: 1.1;
+}
+h2 {
+  font-size: var(--fs-800);
+}
+h3 {
+  font-size: var(--fs-700);
+}
+
+/* layout helpers */
+.container {
+  width: min(100% - 2rem, var(--container-max));
+  margin-inline: auto;
+}
+.flex {
+  display: flex;
+  gap: var(--space-lg);
+}
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: white;
+  border: 0;
+  transition: transform 160ms var(--easing-standard),
+    background-color 160ms var(--easing-standard);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------
+   Desktop-first breakpoints (downscaling)
+------------------------------ */
+@media (max-width: 1440px) {
+}
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+  :root {
+    --fs-900: clamp(2.25rem, 2.4vw + 2rem, 3rem);
+    --fs-800: clamp(1.75rem, 1.6vw + 1.4rem, 2.25rem);
+    --container-max: 720px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --container-max: 360px;
+  }
+}
