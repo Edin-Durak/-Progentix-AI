@@ -94,11 +94,25 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--surface);
-  background: var(--bg);
+  color: var(--text);
+  /* left-to-right gradient with surface dominating the middle */
+  background-color: var(--color-surface);
+  background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-primary) 85%, transparent) 0%,
+      color-mix(in srgb, var(--color-accent-2) 75%, transparent) 12%,
+      color-mix(in srgb, var(--color-accent-1) 65%, transparent) 18%,
+      transparent 35%,
+      transparent 65%,
+      color-mix(in srgb, var(--color-accent-1) 65%, transparent) 82%,
+      color-mix(in srgb, var(--color-accent-2) 75%, transparent) 88%,
+      color-mix(in srgb, var(--color-primary) 85%, transparent) 100%
+    ),
+    var(--color-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 img,
 picture,
 video,
