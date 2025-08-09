@@ -12,6 +12,7 @@
   --color-bg: #230c33;
   --color-ink: #0e0a14;
   --color-white: #ffffff;
+  --color-heading-2: #eef8eb;
 
   /* semantic tokens */
   --bg: var(--color-bg);
@@ -35,7 +36,6 @@
   --space-3xl: 4rem;
 
   /* layout */
-  --container-max: 1200px;
   --radius-sm: 8px;
   --radius-md: 16px;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -94,21 +94,17 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.4;
+  /* font-weight: 300; */
   color: var(--text);
   /* left-to-right gradient with surface dominating the middle */
   background-color: var(--color-surface);
   background: linear-gradient(
-      to right,
-      color-mix(in srgb, var(--color-primary) 85%, transparent) 0%,
-      color-mix(in srgb, var(--color-accent-2) 75%, transparent) 12%,
-      color-mix(in srgb, var(--color-accent-1) 65%, transparent) 18%,
-      transparent 35%,
-      transparent 65%,
-      color-mix(in srgb, var(--color-accent-1) 65%, transparent) 82%,
-      color-mix(in srgb, var(--color-accent-2) 75%, transparent) 88%,
-      color-mix(in srgb, var(--color-primary) 85%, transparent) 100%
-    ),
-    var(--color-surface);
+    to right,
+    color-mix(in srgb, var(--color-primary) 25%, transparent),
+    var(--color-surface) 30%,
+    var(--color-surface) 70%,
+    color-mix(in srgb, var(--color-primary) 25%, transparent)
+  );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -132,61 +128,87 @@ select {
 /* ------------------------------
    Base Elements
 ------------------------------ */
+
+ul {
+  list-style: none;
+}
 a {
-  color: var(--link);
+  color: var(--color-primary);
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.btn {
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  border: 0;
+  transition: transform 160ms var(--easing-standard),
+    background-color 160ms var(--easing-standard);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2.5rem;
+}
+
+.btn-secondary {
+  color: var(--color-primary);
+  background-color: var(--color-surface);
+}
+
+.btn-tertiary {
+  color: var(--color-surface);
+  background-color: var(--color-accent-2);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-black {
+  color: var(--color-surface);
+  background-color: var(--color-ink);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
 }
 
 h1 {
-  font-size: var(--fs-900);
-  line-height: 1.1;
+  font-size: 4.35rem;
+  line-height: 1.06;
 }
 h2 {
-  font-size: var(--fs-800);
+  font-size: 3.1875rem;
+  color: var(--color-heading-2);
 }
 h3 {
-  font-size: var(--fs-700);
+  font-size: 2.25rem;
+}
+h1,
+h2,
+h3 {
+  font-weight: 400;
 }
 
 /* layout helpers */
 .container {
-  width: min(100% - 2rem, var(--container-max));
-  margin-inline: auto;
-}
-.flex {
-  display: flex;
-  gap: var(--space-lg);
-}
-.grid {
-  display: grid;
-  gap: var(--space-lg);
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-primary);
-  color: white;
-  border: 0;
-  transition: transform 160ms var(--easing-standard),
-    background-color 160ms var(--easing-standard);
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.visually-hidden {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 6rem;
 }
 
 /* motion preferences */
@@ -199,6 +221,60 @@ h3 {
   }
 }
 
+/* ------------------------------
+   Header
+------------------------------ */
+
+.header {
+  background-color: #e8e0f0;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  max-width: 800px;
+  margin: 1rem auto;
+  position: sticky;
+  top: 2rem;
+  z-index: 100;
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+
+    span {
+      padding-top: 5px;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+  }
+
+  .nav-list a {
+    border-bottom: 2px solid transparent;
+    transition: border-color 160ms var(--easing-standard);
+  }
+
+  .nav-list a:hover,
+  .nav-list a:focus,
+  .nav-list a:active {
+    border-color: var(--color-primary);
+  }
+
+  .nav-list [class*="btn"] {
+    border-bottom: 0;
+  }
+}
 /* ------------------------------
    Desktop-first breakpoints (downscaling)
 ------------------------------ */
