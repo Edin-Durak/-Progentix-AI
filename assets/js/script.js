@@ -90,6 +90,96 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Smooth fade-in animations for revealing elements
+document.addEventListener("DOMContentLoaded", function () {
+  // Elements to animate (excluding sage-step elements)
+  const animateElements = [
+    // Hero section
+    ...document.querySelectorAll(".hero h1, .hero p, .hero .hero-cta"),
+    // About section
+    ...document.querySelectorAll(".about-section h2, .about-section .btn"),
+    // Meet Sage section - only heading and intro
+    ...document.querySelectorAll(".meet-sage-heading, .meet-sage-intro"),
+    // Video sections
+    ...document.querySelectorAll(
+      ".video-section p, .video-section h2, .video-section .btn"
+    ),
+    // Case studies section
+    ...document.querySelectorAll(
+      ".case-studies-section h2, .case-study-card, .case-studies-cta"
+    ),
+    // Value proposition section
+    ...document.querySelectorAll(
+      ".value-proposition-section h2, .value-proposition-section .btn"
+    ),
+    // Proptix way section
+    ...document.querySelectorAll(".proptix-way-section h2, .comparison-table"),
+    // Plans section
+    ...document.querySelectorAll(".plans-section h2, .plan-card"),
+    // Questions section
+    ...document.querySelectorAll(
+      ".questions-section h2, .questions-section p, .questions-cta"
+    ),
+  ];
+
+  // Add sage-step elements for mobile only
+  if (window.innerWidth <= 768) {
+    const sageStepElements = document.querySelectorAll(".sage-step");
+    animateElements.push(...sageStepElements);
+  }
+
+  // Set initial state - all elements start hidden
+  animateElements.forEach((element) => {
+    if (element) {
+      element.style.opacity = "0";
+      element.style.transform = "translateY(30px)";
+      element.style.transition =
+        "opacity 0.8s ease-out, transform 0.8s ease-out";
+    }
+  });
+
+  // Intersection Observer for scroll-triggered animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+        observer.unobserve(entry.target); // Stop observing once animated
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements
+  animateElements.forEach((element) => {
+    if (element) {
+      observer.observe(element);
+    }
+  });
+
+  // Handle window resize for mobile sage-step elements
+  window.addEventListener("resize", function () {
+    if (window.innerWidth <= 768) {
+      // Add sage-step elements if not already included
+      const sageStepElements = document.querySelectorAll(".sage-step");
+      sageStepElements.forEach((element) => {
+        if (!animateElements.includes(element)) {
+          animateElements.push(element);
+          element.style.opacity = "0";
+          element.style.transform = "translateY(30px)";
+          element.style.transition =
+            "opacity 0.8s ease-out, transform 0.8s ease-out";
+          observer.observe(element);
+        }
+      });
+    }
+  });
+});
+
 // Mobile navigation functionality
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.querySelector(".hamburger-menu");
