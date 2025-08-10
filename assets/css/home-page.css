@@ -59,6 +59,9 @@
       text-align: left;
       flex: 1;
     }
+    .empty-step {
+      opacity: 0;
+    }
 
     .step-image {
       flex: 1.5;
