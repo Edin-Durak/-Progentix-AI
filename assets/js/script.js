@@ -105,13 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     const isMobile = window.innerWidth <= 768;
 
-    if (!isMobile && nav.classList.contains("active")) {
+    if (!isMobile || nav.classList.contains("active")) {
       // If resizing to desktop and menu is open, close it
       nav.classList.remove("active");
       hamburgerMenu.style.display = "none"; // Hide hamburger on desktop
       closeMenu.style.display = "none";
       document.body.style.overflow = "";
-    } else if (isMobile && !nav.classList.contains("active")) {
+    } else if (isMobile || !nav.classList.contains("active")) {
       // If resizing to mobile and menu is closed, show hamburger
       hamburgerMenu.style.display = "block";
       closeMenu.style.display = "none";
