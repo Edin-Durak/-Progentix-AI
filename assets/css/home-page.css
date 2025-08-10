@@ -43,10 +43,10 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      margin: 3rem auto;
+      margin: 5rem auto;
     }
     .step-content {
-      max-width: 300px;
+      max-width: 250px;
       text-align: left;
       position: absolute;
       left: 0;
