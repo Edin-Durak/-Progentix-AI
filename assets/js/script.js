@@ -198,6 +198,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Hover animations for cards
+document.addEventListener("DOMContentLoaded", function () {
+  // Plan cards hover animation
+  const planCards = document.querySelectorAll(".plan-card");
+  planCards.forEach((card) => {
+    card.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-10px)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    card.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+
+  // Case study cards hover animation
+  const caseStudyCards = document.querySelectorAll(".case-study-card");
+  caseStudyCards.forEach((card) => {
+    card.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-10px)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    card.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+});
+
 // Mobile navigation functionality
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.querySelector(".hamburger-menu");
