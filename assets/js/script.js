@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to update step visibility based on scroll position
   function updateStepVisibility() {
+    // Only apply scroll animations on desktop (>992px)
+    if (window.innerWidth <= 992) return;
+
     const scrollTop = window.pageYOffset;
     const containerTop = stepsContainer.offsetTop;
     const relativeScroll = scrollTop - containerTop;
@@ -44,15 +47,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Function to reset steps for mobile view
+  function resetStepsForMobile() {
+    if (window.innerWidth <= 992) {
+      sageSteps.forEach((step, index) => {
+        step.style.opacity = "1";
+        step.style.position = "relative";
+        step.style.top = "auto";
+        step.style.left = "auto";
+        step.style.width = "auto";
+        step.style.height = "auto";
+      });
+    } else {
+      // Restore desktop behavior
+      sageSteps.forEach((step, index) => {
+        step.style.opacity = index === 0 ? "1" : "0";
+        step.style.position = "absolute";
+        step.style.top = "0";
+        step.style.left = "0";
+        step.style.width = "100%";
+        step.style.height = "100%";
+      });
+    }
+  }
+
   // Add scroll event listener
   window.addEventListener("scroll", updateStepVisibility);
 
   // Initial call
   updateStepVisibility();
+  resetStepsForMobile();
 
   // Add smooth transitions
   sageSteps.forEach((step) => {
     step.style.transition = "opacity 0.6s ease-in-out";
+  });
+
+  // Handle window resize for steps
+  window.addEventListener("resize", function () {
+    resetStepsForMobile();
+    updateStepVisibility();
   });
 });
 

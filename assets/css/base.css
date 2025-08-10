@@ -408,7 +408,7 @@ h3 {
   }
 }
 @media (max-width: 480px) {
-  :root {
-    --container-max: 360px;
+  .container {
+    padding: 5rem 1rem;
   }
 }
