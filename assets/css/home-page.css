@@ -55,7 +55,7 @@
       margin: 5rem auto;
     }
     .step-content {
-      max-width: 250px;
+      /* max-width: 250px; */
       text-align: left;
       flex: 1;
     }
