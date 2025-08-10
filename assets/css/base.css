@@ -275,6 +275,11 @@ h3 {
   .nav-list [class*="btn"] {
     border-bottom: 0;
   }
+
+  .hamburger-menu,
+  .close-menu {
+    display: none;
+  }
 }
 /* ------------------------------
    Desktop-first breakpoints (downscaling)
@@ -289,6 +294,103 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .container {
+    padding: 5rem 2rem;
+  }
+
+  .header {
+    top: 1rem;
+
+    .header-inner {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--color-surface);
+      z-index: 1000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav.active {
+      transform: translateX(0);
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .nav-list a {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+    }
+
+    .nav-list li,
+    .nav-list a {
+      width: 100%;
+    }
+
+    .nav-list a:not([class*="btn"]) {
+      background-color: var(--color-accent-2);
+      display: inline-block;
+    }
+
+    .nav-list [class*="btn"] {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .hamburger-menu {
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .hamburger-menu {
+      display: block;
+    }
+
+    .close-menu {
+      display: none;
+    }
+
+    .nav.active {
+      transform: translateX(0);
+    }
+
+    .hamburger-menu img,
+    .close-menu img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 @media (max-width: 480px) {
   :root {

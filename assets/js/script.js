@@ -55,3 +55,66 @@ document.addEventListener("DOMContentLoaded", function () {
     step.style.transition = "opacity 0.6s ease-in-out";
   });
 });
+
+// Mobile navigation functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburgerMenu = document.querySelector(".hamburger-menu");
+  const closeMenu = document.querySelector(".close-menu");
+  const nav = document.querySelector(".nav");
+
+  if (!hamburgerMenu || !closeMenu || !nav) return;
+
+  // Open mobile menu
+  hamburgerMenu.addEventListener("click", function () {
+    nav.classList.add("active");
+    hamburgerMenu.style.display = "none";
+    closeMenu.style.display = "block";
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+  });
+
+  // Close mobile menu
+  closeMenu.addEventListener("click", function () {
+    nav.classList.remove("active");
+    hamburgerMenu.style.display = "block";
+    closeMenu.style.display = "none";
+    document.body.style.overflow = ""; // Restore scroll
+  });
+
+  // Close menu when clicking on navigation links
+  const navLinks = nav.querySelectorAll("a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      nav.classList.remove("active");
+      hamburgerMenu.style.display = "block";
+      closeMenu.style.display = "none";
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Close menu when clicking outside
+  nav.addEventListener("click", function (e) {
+    if (e.target === nav) {
+      nav.classList.remove("active");
+      hamburgerMenu.style.display = "block";
+      closeMenu.style.display = "none";
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener("resize", function () {
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile && nav.classList.contains("active")) {
+      // If resizing to desktop and menu is open, close it
+      nav.classList.remove("active");
+      hamburgerMenu.style.display = "none"; // Hide hamburger on desktop
+      closeMenu.style.display = "none";
+      document.body.style.overflow = "";
+    } else if (isMobile && !nav.classList.contains("active")) {
+      // If resizing to mobile and menu is closed, show hamburger
+      hamburgerMenu.style.display = "block";
+      closeMenu.style.display = "none";
+    }
+  });
+});
