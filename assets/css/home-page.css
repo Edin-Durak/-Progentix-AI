@@ -81,7 +81,7 @@
     }
 
     .pt-1 {
-      padding-top: 0.5rem;
+      padding-top: 0.6rem;
     }
 
     .comparison-header,
@@ -97,7 +97,8 @@
       width: 300px;
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
-      padding: 0.5rem;
+      padding: 0.6rem;
+      box-sizing: content-box;
     }
 
     .comparison-cell[class*="old-way"] {
