@@ -13,6 +13,80 @@
     }
   }
 
+  .video-section {
+    .video-background-container {
+      width: 90%;
+      max-width: 1900px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .video-background-video {
+      border-radius: 20px;
+    }
+  }
+
+  .video-section-text-overlay {
+    .video-background-container {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary);
+        opacity: 0.3;
+        z-index: 1;
+      }
+    }
+
+    p {
+      position: absolute;
+      top: 80px;
+      left: auto;
+      right: 40px;
+      max-width: 500px;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      color: var(--color-white);
+      z-index: 2;
+    }
+  }
+
+  .video-section-cta-overlay {
+    .video-background-container {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary);
+        opacity: 0.3;
+        z-index: 1;
+      }
+    }
+
+    .video-section-cta-overlay-content {
+      position: absolute;
+      top: 80px;
+      left: 80px;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      color: var(--color-white);
+      z-index: 2;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+  }
+
   .about-section,
   .value-proposition-section,
   .questions-section {
