@@ -147,6 +147,9 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     const isMobile = window.innerWidth <= 768;
 
+    // Temporarily disable transitions during resize
+    nav.style.transition = "none";
+
     if (!isMobile) {
       // Desktop behavior - always hide hamburger and close menu
       nav.classList.remove("active");
@@ -158,5 +161,10 @@ document.addEventListener("DOMContentLoaded", function () {
       hamburgerMenu.style.display = "block";
       closeMenu.style.display = "none";
     }
+
+    // Re-enable transitions after a short delay
+    setTimeout(() => {
+      nav.style.transition = "";
+    }, 50);
   });
 });
