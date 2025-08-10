@@ -455,12 +455,34 @@
         gap: 1rem;
       }
     }
+
+    .questions-section {
+      p {
+        font-size: 1.4rem;
+      }
+
+      .questions-cta {
+        gap: 1rem;
+      }
+    }
   }
 }
 @media (max-width: 480px) {
   .main-home {
     .hero-cta a {
       width: 250px;
+    }
+
+    .video-section-text-overlay {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+
+    .questions-section {
+      p {
+        font-size: 1.2rem;
+      }
     }
   }
 }
