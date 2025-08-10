@@ -38,7 +38,7 @@
       font-size: 1.1rem;
     }
     .sage-steps-container {
-      height: 2900px;
+      height: 4000px; /* Increased for longer scroll duration */
     }
 
     .sage-steps-wrapper {
@@ -52,7 +52,6 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      margin: 5rem auto;
     }
     .step-content {
       /* max-width: 250px; */

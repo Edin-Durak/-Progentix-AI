@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentStep = 0;
   const totalSteps = sageSteps.length;
   const stepHeight = 400;
-  const containerHeight = 2900;
+  const containerHeight = 4000; // Increased from 2900 to 4000 for longer scroll duration
 
   // Set initial state - first step visible, others hidden
   sageSteps.forEach((step, index) => {
