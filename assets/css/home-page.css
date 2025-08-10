@@ -25,6 +25,40 @@
     margin: 0 auto 1rem;
   }
 
+  .meet-sage-section {
+    text-align: center;
+    h2 {
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .meet-sage-intro {
+      max-width: 550px;
+      margin: 0 auto 1rem;
+      font-size: 1.1rem;
+    }
+
+    .sage-step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 3rem auto;
+    }
+    .step-content {
+      max-width: 300px;
+      text-align: left;
+      position: absolute;
+      left: 0;
+    }
+
+    .step-content.right {
+      left: auto;
+      right: 0;
+      text-align: right;
+    }
+  }
+
   .case-studies-section {
     .case-studies-grid {
       display: grid;
