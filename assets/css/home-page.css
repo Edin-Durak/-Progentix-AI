@@ -2,12 +2,22 @@
   .hero {
     text-align: center;
 
+    h1,
+    p {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
     .hero-cta {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
   }
 
@@ -18,6 +28,17 @@
 
     p {
       margin: 1rem 0 2rem;
+    }
+  }
+
+  .first-video-section {
+    .video-background-container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
   }
 

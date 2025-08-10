@@ -161,6 +161,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Simple reveal animation for hero and first video section on load
+  const heroAndFirstVideoElements = [
+    ...document.querySelectorAll(".hero h1, .hero p, .hero .hero-cta"),
+    ...document.querySelectorAll(
+      ".first-video-section .video-background-container"
+    ),
+  ];
+
+  // Animate hero and first video elements on load
+  heroAndFirstVideoElements.forEach((element, index) => {
+    if (element) {
+      setTimeout(() => {
+        element.style.opacity = "1";
+        element.style.transform = "translateY(0)";
+      }, 300 + index * 200); // Staggered animation
+    }
+  });
+
   // Handle window resize for mobile sage-step elements
   window.addEventListener("resize", function () {
     if (window.innerWidth <= 768) {
