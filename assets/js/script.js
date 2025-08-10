@@ -119,8 +119,16 @@ document.addEventListener("DOMContentLoaded", function () {
   navLinks.forEach((link) => {
     link.addEventListener("click", function () {
       nav.classList.remove("active");
-      hamburgerMenu.style.display = "block";
-      closeMenu.style.display = "none";
+
+      // Only show hamburger on mobile
+      if (window.innerWidth <= 768) {
+        hamburgerMenu.style.display = "block";
+        closeMenu.style.display = "none";
+      } else {
+        hamburgerMenu.style.display = "none";
+        closeMenu.style.display = "none";
+      }
+
       document.body.style.overflow = "";
     });
   });
@@ -139,14 +147,14 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () {
     const isMobile = window.innerWidth <= 768;
 
-    if (!isMobile || nav.classList.contains("active")) {
-      // If resizing to desktop and menu is open, close it
+    if (!isMobile) {
+      // Desktop behavior - always hide hamburger and close menu
       nav.classList.remove("active");
-      hamburgerMenu.style.display = "none"; // Hide hamburger on desktop
+      hamburgerMenu.style.display = "none";
       closeMenu.style.display = "none";
       document.body.style.overflow = "";
-    } else if (isMobile || !nav.classList.contains("active")) {
-      // If resizing to mobile and menu is closed, show hamburger
+    } else if (isMobile && !nav.classList.contains("active")) {
+      // Mobile behavior - show hamburger only if menu is closed
       hamburgerMenu.style.display = "block";
       closeMenu.style.display = "none";
     }
