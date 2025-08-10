@@ -37,7 +37,16 @@
       margin: 0 auto 1rem;
       font-size: 1.1rem;
     }
+    .sage-steps-container {
+      height: 2900px;
+    }
 
+    .sage-steps-wrapper {
+      position: sticky;
+      position: -webkit-sticky;
+      top: calc(50vh - (400px / 2));
+      height: 400px;
+    }
     .sage-step {
       display: flex;
       align-items: center;
@@ -48,8 +57,11 @@
     .step-content {
       max-width: 250px;
       text-align: left;
-      position: absolute;
-      left: 0;
+      flex: 1;
+    }
+
+    .step-image {
+      flex: 1.5;
     }
 
     .step-content.right {
