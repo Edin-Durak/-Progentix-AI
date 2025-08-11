@@ -230,11 +230,15 @@ h3 {
   background-color: #e8e0f0;
   border-radius: 15px;
   padding: 0.5rem 1rem;
-  max-width: 800px;
+  max-width: 720px;
   margin: 1rem auto;
   position: sticky;
   top: 2rem;
   z-index: 100;
+
+  a {
+    line-height: 1.1;
+  }
 
   .header-inner {
     display: flex;
@@ -247,11 +251,13 @@ h3 {
     align-items: center;
     gap: var(--space-2xs);
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 720px;
     color: var(--color-primary);
 
     span {
-      padding-top: 5px;
+      padding-top: 3px;
+      line-height: 1.4;
+      font-weight: 700;
     }
   }
 
@@ -264,6 +270,10 @@ h3 {
   .nav-list a {
     border-bottom: 2px solid transparent;
     transition: border-color 160ms var(--easing-standard);
+  }
+
+  .nav-list a:not([class*="btn"]) {
+    padding: 0.5rem 0;
   }
 
   .nav-list a:hover,

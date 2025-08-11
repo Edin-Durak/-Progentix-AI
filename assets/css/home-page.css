@@ -21,6 +21,14 @@
     }
   }
 
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
   .hero-inner {
     max-width: 1000px;
     line-height: 1.1;
@@ -211,9 +219,8 @@
       margin-bottom: 0.2rem;
     }
 
-    .case-studies-cta {
+    .hero-cta {
       margin-top: 2rem;
-      text-align: center;
     }
   }
   .value-proposition-title {
@@ -258,7 +265,7 @@
       background-color: var(--color-old-way);
     }
     .comparison-cell[class*="proptix-way"] {
-      background-color: var(--color-accent-1);
+      background-color: var(--color-primary);
       color: var(--color-surface);
       font-style: normal;
     }
