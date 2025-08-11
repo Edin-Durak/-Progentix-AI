@@ -229,6 +229,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Button hover animations
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".btn-secondary");
+  buttons.forEach((button) => {
+    button.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-2px)";
+      this.style.opacity = "0.9";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    button.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+});
+
 // Mobile navigation functionality
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.querySelector(".hamburger-menu");
