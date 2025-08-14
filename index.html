@@ -113,7 +113,9 @@
             Every project, profitable.
           </p>
           <div class="hero-cta">
-            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-primary">Request A Demo</a>
           </div>
         </div>
@@ -149,7 +151,9 @@
             confidence.
           </h2>
           <div class="hero-cta">
-            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-secondary">Request A Demo</a>
           </div>
         </div>
@@ -460,7 +464,9 @@
           </div>
 
           <div class="hero-cta">
-            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-primary">Request A Demo</a>
           </div>
         </div>
@@ -477,7 +483,9 @@
             platform you’ve tried.
           </h2>
           <div class="hero-cta">
-            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-secondary">Request A Demo</a>
           </div>
         </div>
@@ -642,6 +650,7 @@
                     class="btn btn-primary"
                     aria-labelledby="plan-flipstart-cta plan-flipstart-name"
                     id="plan-flipstart-cta"
+                    data-modal-trigger="try-free"
                     >Try For Free</a
                   >
                 </footer>
@@ -683,6 +692,7 @@
                     class="btn btn-primary"
                     aria-labelledby="plan-enterprise-cta plan-enterprise-name"
                     id="plan-enterprise-cta"
+                    data-modal-trigger="try-free"
                     >Try For Free</a
                   >
                 </footer>
@@ -708,6 +718,39 @@
         </div>
       </section>
     </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal-close" aria-label="Close modal">
+          <img src="./assets/img/close-icon.svg" alt="Close" />
+        </button>
+        <div class="modal-content">
+          <h2 id="modal-title">Try Proptix For Free</h2>
+          <div class="modal-iframe-container">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
+              style="
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 3px;
+              "
+              id="inline-o1BMyrgvIR7zUg4daTCg"
+              title="Proptix Free Rego Form"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     <script src="assets/js/script.js" defer></script>
   </body>
 </html>

@@ -324,3 +324,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 50);
   });
 });
+
+// Modal functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const modalOverlay = document.getElementById("modal-overlay");
+  const modalClose = document.querySelector(".modal-close");
+  const modalTriggers = document.querySelectorAll(
+    '[data-modal-trigger="try-free"]'
+  );
+
+  if (!modalOverlay || !modalClose) return;
+
+  // Open modal
+  function openModal() {
+    modalOverlay.classList.add("active");
+    modalOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+  }
+
+  // Close modal
+  function closeModal() {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = ""; // Restore scroll
+  }
+
+  // Event listeners for opening modal
+  modalTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Event listener for closing modal
+  modalClose.addEventListener("click", closeModal);
+
+  // Close modal when clicking outside
+  modalOverlay.addEventListener("click", function (e) {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
+      closeModal();
+    }
+  });
+});
