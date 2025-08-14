@@ -3,19 +3,711 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Progentix‑AI</title>
+    <title>Proptix.ai - AI-Powered Property Investment Platform</title>
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="./assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="./assets/img/favicon.png" />
+
+    <!-- Meta Tags for SEO -->
     <meta
       name="description"
-      content="Progentix‑AI — modern AI solutions. Fast, accessible, and beautiful."
+      content="Proptix.ai - The Property Profit System powered by AI. Find deals, analyze properties, secure funding, and flip with confidence using our AI mentor Sage."
+    />
+    <meta
+      name="keywords"
+      content="property investment, AI property platform, real estate flipping, property deals, AI mentor, property funding, real estate investment, property analysis, Sage AI, property profit system"
+    />
+    <meta name="author" content="Proptix.ai" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Proptix.ai - AI-Powered Property Investment Platform"
+    />
+    <meta
+      property="og:description"
+      content="The Property Profit System powered by AI. Every opportunity, uncovered. Every deal, funded. Every project, profitable."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://proptix.ai" />
+    <meta property="og:image" content="./assets/img/logo.webp" />
+    <meta property="og:site_name" content="Proptix.ai" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Proptix.ai - AI-Powered Property Investment Platform"
+    />
+    <meta
+      name="twitter:description"
+      content="The Property Profit System powered by AI. Find deals, analyze properties, secure funding, and flip with confidence."
+    />
+    <meta name="twitter:image" content="./assets/img/logo.webp" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#592e83" />
+    <meta name="msapplication-TileColor" content="#592e83" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./assets/css/base.css" as="style" />
+    <link
+      rel="preload"
+      href="./assets/fonts/Poppins/poppins-regular-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/Poppins/poppins-bold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <link rel="preload" href="./assets/css/base.css" as="style" />
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="./assets/css/base.css" />
     <link rel="stylesheet" href="./assets/css/home-page.css" />
   </head>
-  <body>
-    <h1>Hello World</h1>
-    The Property Profit System. Powered by AI.
+  <body class="home-page">
+    <header class="header">
+      <div class="header-inner">
+        <a href="#top" class="logo">
+          <img
+            src="./assets/img/logo.webp"
+            alt="Progentix‑AI"
+            width="40"
+            height="40"
+          />
+          <span>proptix.ai</span>
+        </a>
+        <button class="hamburger-menu" aria-label="Open navigation menu">
+          <img src="./assets/img/hamburger-menu-icon.svg" alt="Menu" />
+        </button>
+        <nav class="nav">
+          <button class="close-menu" aria-label="Close navigation menu">
+            <img src="./assets/img/close-icon.svg" alt="Close" />
+          </button>
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#meet-sage">Meet Sage</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#" class="btn btn-tertiary">Login</a></li>
+            <li><a href="#" class="btn btn-black">Access Free Trial</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main-home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
+          <h1 id="hero-title">The Property Profit System. Powered by AI.</h1>
+          <p>
+            Every opportunity, uncovered. <br />
+            Every deal, funded. <br />
+            Every project, profitable.
+          </p>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary">Request A Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="video-section first-video-section"
+        aria-labelledby="video-section-heading"
+      >
+        <h2 id="video-section-heading" hidden>Video Section</h2>
+        <div class="video-background-container">
+          <video
+            class="video-background-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="./assets/img/video-thumbnail-img.jpg"
+            preload="metadata"
+          >
+            <!-- Optimized video source -->
+            <source src="./assets/videos/RecoveryRoute.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title" hidden>About Proptix</h2>
+          <h2 class="about-title">
+            With Proptix, you get a proven system, AI support, investor
+            connections, funding options, and risk-cutting tools to flip with
+            confidence.
+          </h2>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary">Request A Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="meet-sage-section"
+        id="meet-sage"
+        aria-labelledby="meet-sage-heading"
+      >
+        <div class="container">
+          <h2 id="meet-sage-heading" class="meet-sage-title">Meet Sage</h2>
+          <p class="meet-sage-intro">
+            Sage is a purpose-built AI flipping partner, trained on thousands of
+            property workflows, feasibility studies, negotiation tactics, and
+            project plans.
+          </p>
+
+          <div class="sage-steps-container">
+            <div class="sage-steps-wrapper">
+              <div class="sage-step" data-step="1">
+                <div class="step-content">
+                  <h3>Step 1: Meet Sage</h3>
+                  <p>
+                    Your personal AI mentor, ready 24/7 to guide your property
+                    journey and answer every deal question.
+                  </p>
+                </div>
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="empty-step step-content">
+                  <h3>Step 1: Meet Sage</h3>
+                  <p>
+                    Your personal AI mentor, ready 24/7 to guide your property
+                    journey and answer every deal question.
+                  </p>
+                </div>
+              </div>
+
+              <div class="sage-step" data-step="2">
+                <div class="empty-step step-content">
+                  <h3>Step 2: Set Your Strategy</h3>
+                  <p>
+                    Tell Sage your goals, budget, and deal type, and the system
+                    tailors a roadmap that fits your profit target.
+                  </p>
+                </div>
+
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="step-content right">
+                  <h3>Step 2: Set Your Strategy</h3>
+                  <p>
+                    Tell Sage your goals, budget, and deal type, and the system
+                    tailors a roadmap that fits your profit target.
+                  </p>
+                </div>
+              </div>
+
+              <div class="sage-step" data-step="3">
+                <div class="step-content">
+                  <h3>Step 3: Find Real Deals</h3>
+                  <p>
+                    Use Proptix’s data-backed search tools to uncover
+                    under-the-radar flips, renos, and development sites.
+                  </p>
+                </div>
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="empty-step step-content">
+                  <h3>Step 3: Find Real Deals</h3>
+                  <p>
+                    Use Proptix’s data-backed search tools to uncover
+                    under-the-radar flips, renos, and development sites.
+                  </p>
+                </div>
+              </div>
+
+              <div class="sage-step" data-step="4">
+                <div class="empty-step step-content">
+                  <h3>Step 4: Analyse with Confidence</h3>
+                  <p>
+                    Run costings, feasibility, and profit margins using
+                    AI-powered tools that cut through guesswork and hype.
+                  </p>
+                </div>
+
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="step-content right">
+                  <h3>Step 4: Analyse with Confidence</h3>
+                  <p>
+                    Run costings, feasibility, and profit margins using
+                    AI-powered tools that cut through guesswork and hype.
+                  </p>
+                </div>
+              </div>
+
+              <div class="sage-step" data-step="5">
+                <div class="step-content">
+                  <h3>Step 5: Secure the Funding</h3>
+                  <p>
+                    Access private lenders and get funding help with creative
+                    strategies so money doesn’t hold you back.
+                  </p>
+                </div>
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="empty-step step-content">
+                  <h3>Step 5: Secure the Funding</h3>
+                  <p>
+                    Access private lenders and get funding help with creative
+                    strategies so money doesn’t hold you back.
+                  </p>
+                </div>
+              </div>
+
+              <div class="sage-step" data-step="6">
+                <div class="empty-step step-content">
+                  <h3>Step 6: Flip, Sell, Repeat</h3>
+                  <p>
+                    Follow the proven process, supported by Sage and our expert
+                    network, to deliver profits deal after deal.
+                  </p>
+                </div>
+                <div class="step-image">
+                  <img
+                    src="./assets/img/laptop-img.png"
+                    alt="Sage AI interface on laptop"
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="step-content right">
+                  <h3>Step 6: Flip, Sell, Repeat</h3>
+                  <p>
+                    Follow the proven process, supported by Sage and our expert
+                    network, to deliver profits deal after deal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="video-section video-section-text-overlay"
+        aria-labelledby="video-section-text-overlay-heading"
+      >
+        <h2 id="video-section-text-overlay-heading" hidden>
+          Video Section Text Overlay
+        </h2>
+        <div class="video-background-container">
+          <video
+            class="video-background-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="./assets/img/video-thumbnail-img.jpg"
+            preload="metadata"
+          >
+            <!-- Optimized video source -->
+            <source src="./assets/videos/RecoveryRoute.mp4" type="video/mp4" />
+          </video>
+
+          <p>
+            Built for ambitious property entrepreneurs, Proptix combines AI,
+            funding, and a proven system to flip smarter and build wealth.
+          </p>
+        </div>
+      </section>
+      <section
+        class="case-studies-section"
+        id="case-studies"
+        aria-labelledby="case-studies-heading"
+      >
+        <div class="container">
+          <h2 id="case-studies-heading" hidden>Case Studies</h2>
+
+          <div class="case-studies-grid">
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+
+            <article class="case-study-card">
+              <img
+                src="./assets/img/neighborhood-img.jpg"
+                alt="Modern residential street with contemporary houses"
+                width="300"
+                height="200"
+                loading="lazy"
+              />
+              <div class="case-study-content">
+                <h3 class="profit-amount">$170,000 profit</h3>
+                <p class="investor-name">Tina</p>
+                <p class="sale-details">Sold 2030, NSW</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary">Request A Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="value-proposition-section"
+        aria-labelledby="value-proposition-heading"
+      >
+        <div class="container">
+          <h2 id="value-proposition-heading" hidden>Value Proposition</h2>
+          <h2 class="value-proposition-title">
+            All-in-one, always-on, and built to replace every other property
+            platform you’ve tried.
+          </h2>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary">Request A Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="proptix-way-section"
+        aria-labelledby="proptix-way-heading"
+      >
+        <div class="container">
+          <h2 id="proptix-way-heading" hidden>Proptix Way</h2>
+          <h2 class="proptix-way-title">The Old Way v The Proptix Way</h2>
+
+          <div
+            class="comparison-table"
+            role="table"
+            aria-label="Comparison between traditional property investment and Proptix approach"
+          >
+            <div class="comparison-header" role="row">
+              <div class="comparison-cell old-way-header" role="columnheader">
+                <h3>The Old Way</h3>
+              </div>
+              <div
+                class="comparison-cell proptix-way-header"
+                role="columnheader"
+              >
+                <h3>The Proptix Way</h3>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p>Scrambling for deals, hoping something sticks</p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p>Handpicked, high-potential deals delivered by AI</p>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p>Piecing together tools, tips, and YouTube advice</p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p>Everything you need in one smart, streamlined platform</p>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p class="pt-1">
+                  Hitting brick walls with banks and funding fatigue
+                </p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p>Creative funding strategies and lender connections on tap</p>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p>Second-guessing every move and learning the hard way</p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p class="pt-1">
+                  Backed by Sage, your AI mentor, guiding every step
+                </p>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p class="pt-1">Going solo, stuck in your own head</p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p>
+                  Plug into a network of real investors and dealmakers who get
+                  it
+                </p>
+              </div>
+            </div>
+
+            <div class="comparison-row" role="row">
+              <div class="comparison-cell old-way" role="cell">
+                <p class="pt-1">
+                  Drowning in overwhelm, unsure what to do next
+                </p>
+              </div>
+              <div class="comparison-cell proptix-way" role="cell">
+                <p>
+                  Follow a clear, proven roadmap to flip with confidence and
+                  profit
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="video-section video-section-cta-overlay"
+        aria-labelledby="video-section-cta-overlay-heading"
+      >
+        <div class="video-background-container">
+          <video
+            class="video-background-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="./assets/img/video-thumbnail-img.jpg"
+            preload="metadata"
+          >
+            <!-- Optimized video source -->
+            <source src="./assets/videos/RecoveryRoute.mp4" type="video/mp4" />
+          </video>
+
+          <div class="video-section-cta-overlay-content">
+            <h2 id="video-section-cta-overlay-heading">
+              See Proptix In Action
+            </h2>
+            <a href="#" class="btn btn-primary">Book A Demo</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="plans-section" id="plans" aria-labelledby="plans-heading">
+        <div class="container">
+          <h2 id="plans-heading" hidden>Plans section</h2>
+          <h2 class="plans-title">Choose a plan that suits your needs</h2>
+          <ul class="plans" role="list">
+            <li>
+              <article
+                class="plan-card"
+                aria-labelledby="plan-flipstart-name"
+                aria-describedby="plan-flipstart-price plan-flipstart-desc"
+              >
+                <header>
+                  <h4 id="plan-flipstart-name">Flipstart 180</h4>
+                  <p id="plan-flipstart-price">
+                    <span aria-label="15 dollars per month">
+                      <data value="15">$15</data
+                      ><abbr title="per month">/mo</abbr>
+                    </span>
+                  </p>
+                </header>
+
+                <p id="plan-flipstart-desc">
+                  Run your business efficiently with all the basics you need
+                </p>
+
+                <ul class="plan-features">
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                </ul>
+
+                <footer>
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    aria-labelledby="plan-flipstart-cta plan-flipstart-name"
+                    id="plan-flipstart-cta"
+                    >Try For Free</a
+                  >
+                </footer>
+              </article>
+            </li>
+
+            <li>
+              <article
+                class="plan-card"
+                aria-labelledby="plan-enterprise-name"
+                aria-describedby="plan-enterprise-price plan-enterprise-desc"
+              >
+                <header>
+                  <h4 id="plan-enterprise-name">Enterprise Circle</h4>
+                  <p id="plan-enterprise-price">
+                    <span aria-label="20 dollars per month">
+                      <data value="20">$20</data
+                      ><abbr title="per month">/mo</abbr>
+                    </span>
+                  </p>
+                </header>
+
+                <p id="plan-enterprise-desc">
+                  Grow your business with additional features for added
+                  efficiency
+                </p>
+
+                <ul class="plan-features">
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                  <li>Add product feature</li>
+                </ul>
+
+                <footer>
+                  <a
+                    href="#"
+                    class="btn btn-primary"
+                    aria-labelledby="plan-enterprise-cta plan-enterprise-name"
+                    id="plan-enterprise-cta"
+                    >Try For Free</a
+                  >
+                </footer>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="questions-section" aria-labelledby="questions-heading">
+        <div class="container">
+          <h2 id="questions-heading" hidden>Questions section</h2>
+          <h2 class="questions-title">Still have questions?</h2>
+          <p>
+            We get it, this isn’t business as usual. Whether you’re curious
+            about Sage, the tech behind it, or how Proptix fits your strategy,
+            we’re here to help. Reach out and let’s talk deals, not theory.
+          </p>
+          <div class="questions-cta">
+            <a href="#" class="btn btn-secondary">FAQ’s</a>
+            <a href="#" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="assets/js/script.js" defer></script>
   </body>
 </html>
