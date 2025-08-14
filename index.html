@@ -52,6 +52,12 @@
     <meta name="msapplication-TileColor" content="#592e83" />
     <meta name="format-detection" content="telephone=no" />
 
+    <!-- Content Security Policy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-src 'self' https://api.leadconnectorhq.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com; connect-src 'self' https://api.leadconnectorhq.com;"
+    />
+
     <!-- Preload Critical Resources -->
     <link rel="preload" href="./assets/css/base.css" as="style" />
     <link
@@ -74,6 +80,23 @@
     <link rel="stylesheet" href="./assets/css/home-page.css" />
   </head>
   <body class="home-page">
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" aria-hidden="false">
+      <div class="cookie-content">
+        <p>
+          We use cookies and similar technologies to help personalize content,
+          provide a better experience, and analyze our traffic. By clicking
+          "Accept", you consent to our use of cookies.
+        </p>
+        <div class="cookie-buttons">
+          <button id="accept-cookies" class="btn btn-primary">Accept</button>
+          <button id="decline-cookies" class="btn btn-secondary">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+
     <header class="header">
       <div class="header-inner">
         <a href="#top" class="logo">
@@ -733,8 +756,11 @@
         <div class="modal-content">
           <h2 id="modal-title">Try Proptix For Free</h2>
           <div class="modal-iframe-container">
+            <div id="iframe-placeholder" class="iframe-placeholder">
+              <p>Loading form...</p>
+            </div>
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
+              data-src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
               style="
                 width: 100%;
                 height: 100%;
@@ -743,6 +769,7 @@
               "
               id="inline-o1BMyrgvIR7zUg4daTCg"
               title="Proptix Free Rego Form"
+              loading="lazy"
             >
             </iframe>
           </div>
@@ -750,7 +777,6 @@
       </div>
     </div>
 
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     <script src="assets/js/script.js" defer></script>
   </body>
 </html>

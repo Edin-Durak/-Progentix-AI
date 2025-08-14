@@ -340,6 +340,44 @@ document.addEventListener("DOMContentLoaded", function () {
     modalOverlay.classList.add("active");
     modalOverlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden"; // Prevent background scroll
+
+    // Trigger iframe loading
+    setTimeout(() => {
+      const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+      const iframePlaceholder = document.getElementById("iframe-placeholder");
+      let iframeLoaded = false;
+      let thirdPartyScriptLoaded = false;
+
+      if (!iframe || !iframePlaceholder) return;
+
+      // Check cookie consent
+      const cookieChoice = localStorage.getItem("cookie-consent");
+      if (cookieChoice !== "accepted") {
+        console.log("Cookies not accepted, cannot load third-party content");
+        return;
+      }
+
+      // Load iframe
+      const dataSrc = iframe.getAttribute("data-src");
+      if (dataSrc && !iframeLoaded) {
+        iframe.setAttribute("src", dataSrc);
+        iframeLoaded = true;
+      }
+
+      // Load third-party script only when needed
+      if (!thirdPartyScriptLoaded) {
+        const script = document.createElement("script");
+        script.src = "https://link.msgsndr.com/js/form_embed.js";
+        script.async = true;
+        document.head.appendChild(script);
+        thirdPartyScriptLoaded = true;
+      }
+
+      // Hide placeholder after iframe loads
+      iframe.addEventListener("load", function () {
+        iframePlaceholder.classList.add("hidden");
+      });
+    }, 100);
   }
 
   // Close modal
@@ -372,5 +410,38 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
       closeModal();
     }
+  });
+});
+
+// Cookie consent functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const cookieConsent = document.getElementById("cookie-consent");
+  const acceptCookies = document.getElementById("accept-cookies");
+  const declineCookies = document.getElementById("decline-cookies");
+
+  if (!cookieConsent || !acceptCookies || !declineCookies) return;
+
+  // Check if user has already made a choice
+  const cookieChoice = localStorage.getItem("cookie-consent");
+
+  if (!cookieChoice) {
+    // Show cookie banner after a short delay
+    setTimeout(() => {
+      cookieConsent.classList.add("show");
+    }, 1000);
+  }
+
+  // Handle accept cookies
+  acceptCookies.addEventListener("click", function () {
+    localStorage.setItem("cookie-consent", "accepted");
+    cookieConsent.classList.remove("show");
+    cookieConsent.setAttribute("aria-hidden", "true");
+  });
+
+  // Handle decline cookies
+  declineCookies.addEventListener("click", function () {
+    localStorage.setItem("cookie-consent", "declined");
+    cookieConsent.classList.remove("show");
+    cookieConsent.setAttribute("aria-hidden", "true");
   });
 });
