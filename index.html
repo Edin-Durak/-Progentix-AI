@@ -52,6 +52,12 @@
     <meta name="msapplication-TileColor" content="#592e83" />
     <meta name="format-detection" content="telephone=no" />
 
+    <!-- Content Security Policy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-src 'self' https://api.leadconnectorhq.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com; connect-src 'self' https://api.leadconnectorhq.com;"
+    />
+
     <!-- Preload Critical Resources -->
     <link rel="preload" href="./assets/css/base.css" as="style" />
     <link
@@ -74,6 +80,23 @@
     <link rel="stylesheet" href="./assets/css/home-page.css" />
   </head>
   <body class="home-page">
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" aria-hidden="false">
+      <div class="cookie-content">
+        <p>
+          We use cookies and similar technologies to help personalize content,
+          provide a better experience, and analyze our traffic. By clicking
+          "Accept", you consent to our use of cookies.
+        </p>
+        <div class="cookie-buttons">
+          <button id="accept-cookies" class="btn btn-primary">Accept</button>
+          <button id="decline-cookies" class="btn btn-secondary">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+
     <header class="header">
       <div class="header-inner">
         <a href="#top" class="logo">
@@ -113,7 +136,9 @@
             Every project, profitable.
           </p>
           <div class="hero-cta">
-            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-primary">Request A Demo</a>
           </div>
         </div>
@@ -149,7 +174,9 @@
             confidence.
           </h2>
           <div class="hero-cta">
-            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-secondary">Request A Demo</a>
           </div>
         </div>
@@ -460,7 +487,9 @@
           </div>
 
           <div class="hero-cta">
-            <a href="#" class="btn btn-primary">Try For Free</a>
+            <a href="#" class="btn btn-primary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-primary">Request A Demo</a>
           </div>
         </div>
@@ -477,7 +506,9 @@
             platform you’ve tried.
           </h2>
           <div class="hero-cta">
-            <a href="#" class="btn btn-secondary">Try For Free</a>
+            <a href="#" class="btn btn-secondary" data-modal-trigger="try-free"
+              >Try For Free</a
+            >
             <a href="#" class="btn btn-secondary">Request A Demo</a>
           </div>
         </div>
@@ -642,6 +673,7 @@
                     class="btn btn-primary"
                     aria-labelledby="plan-flipstart-cta plan-flipstart-name"
                     id="plan-flipstart-cta"
+                    data-modal-trigger="try-free"
                     >Try For Free</a
                   >
                 </footer>
@@ -683,6 +715,7 @@
                     class="btn btn-primary"
                     aria-labelledby="plan-enterprise-cta plan-enterprise-name"
                     id="plan-enterprise-cta"
+                    data-modal-trigger="try-free"
                     >Try For Free</a
                   >
                 </footer>
@@ -708,6 +741,44 @@
         </div>
       </section>
     </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal-close" aria-label="Close modal">
+          <img src="./assets/img/close-icon.svg" alt="Close" />
+        </button>
+        <div class="modal-content">
+          <h2 id="modal-title">Try Proptix For Free</h2>
+          <div class="modal-iframe-container">
+            <div id="iframe-placeholder" class="iframe-placeholder">
+              <p style="font-size: 1.2rem; text-align: center">
+                Please accept cookies to load the form...
+              </p>
+            </div>
+            <iframe
+              data-src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
+              style="
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 3px;
+              "
+              id="inline-o1BMyrgvIR7zUg4daTCg"
+              title="Proptix Free Rego Form"
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/script.js" defer></script>
   </body>
 </html>
