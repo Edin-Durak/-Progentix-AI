@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to load the form iframe
 function loadFormIframe() {
   const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const loadingElement = document.getElementById("form-loading");
 
   if (!iframe) return;
 
@@ -58,6 +59,14 @@ function loadFormIframe() {
       script.async = true;
       document.head.appendChild(script);
     }
+
+    // Wait 2 seconds, then fade in the iframe and hide loading
+    setTimeout(() => {
+      if (loadingElement) {
+        loadingElement.style.display = "none";
+      }
+      iframe.style.opacity = "1";
+    }, 2700);
   }
 }
 

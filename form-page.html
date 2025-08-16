@@ -117,6 +117,10 @@
         <h2 id="form-heading" hidden>Registration Form</h2>
         <div class="container">
           <div class="form-container">
+            <div id="form-loading" class="form-loading">
+              <div class="loading-spinner"></div>
+              <p>Loading form. Please wait...</p>
+            </div>
             <iframe
               src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
               style="
@@ -125,6 +129,8 @@
                 height: 100%;
                 border: none;
                 border-radius: 3px;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
               "
               id="inline-o1BMyrgvIR7zUg4daTCg"
               data-layout="{'id':'INLINE'}"
