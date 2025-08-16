@@ -457,10 +457,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user has already made a choice
   const cookieChoice = localStorage.getItem("cookie-consent");
 
-  if (!cookieChoice) {
+  if (!cookieChoice || cookieChoice === "declined") {
     // Show cookie banner after a short delay
     setTimeout(() => {
       cookieConsent.classList.add("show");
+      cookieConsent.setAttribute("aria-hidden", "false");
     }, 1000);
   }
 
