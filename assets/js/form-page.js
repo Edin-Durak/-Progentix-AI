@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user has already made a choice
   const cookieChoice = localStorage.getItem("cookie-consent");
 
-  if (!cookieChoice) {
+  if (!cookieChoice || cookieChoice === "declined") {
     // Show cookie banner after a short delay
     setTimeout(() => {
       cookieConsent.classList.add("show");
+      cookieConsent.setAttribute("aria-hidden", "false");
     }, 1000);
   }
 
@@ -48,6 +49,14 @@ function loadFormIframe() {
     // Set cookie consent for LeadConnector
     localStorage.setItem("leadconnector-cookies-accepted", "true");
 
+    // Change text to loading message
+    if (loadingElement) {
+      const loadingText = loadingElement.querySelector("p");
+      if (loadingText) {
+        loadingText.textContent = "Loading form. Please wait...";
+      }
+    }
+
     // Load third-party script if not already loaded
     if (
       !document.querySelector(
@@ -66,7 +75,7 @@ function loadFormIframe() {
         loadingElement.style.display = "none";
       }
       iframe.style.opacity = "1";
-    }, 2700);
+    }, 2000);
   }
 }
 
@@ -75,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookieChoice = localStorage.getItem("cookie-consent");
 
   if (cookieChoice === "accepted") {
+    loadFormIframe();
+  } else if (cookieChoice === "declined") {
+    // Show cookie consent message in loading placeholder for declined users
     loadFormIframe();
   }
 });
