@@ -445,3 +445,36 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieConsent.setAttribute("aria-hidden", "true");
   });
 });
+
+// Iframe form cookie consent handling
+function loadIframeForm() {
+  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+
+  if (!iframe || !iframePlaceholder) return;
+
+  // Set cookie consent for LeadConnector
+  localStorage.setItem("leadconnector-cookies-accepted", "true");
+
+  // Hide placeholder
+  iframePlaceholder.classList.add("hidden");
+
+  // Load iframe
+  const dataSrc = iframe.getAttribute("data-src");
+  if (dataSrc) {
+    iframe.setAttribute("src", dataSrc);
+  }
+
+  // Load third-party script
+  const script = document.createElement("script");
+  script.src = "https://link.msgsndr.com/js/form_embed.js";
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+function hideIframePlaceholder() {
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  if (iframePlaceholder) {
+    iframePlaceholder.classList.add("hidden");
+  }
+}
