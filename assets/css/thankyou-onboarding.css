@@ -17,8 +17,12 @@
 .main-thankyou-onboarding {
   .hero {
     text-align: center;
+
     h1 {
       margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
     p {
@@ -28,8 +32,17 @@
       line-height: 1;
     }
 
+    .hero-subtitle {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
     .hero-content {
       margin-top: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
       .hero-content-flex {
         display: flex;
@@ -104,7 +117,7 @@
       width: 90%;
       max-width: 1900px;
       margin: 0 auto 0.5rem;
-      opacity: 1;
+      opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
@@ -123,6 +136,9 @@
       line-height: 1.66;
       margin: 1rem auto 2rem;
       max-width: 700px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
     .questions-cta {
@@ -131,12 +147,62 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
     a {
       min-width: 200px;
     }
   }
+}
+
+/* Cookie consent banner */
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 1rem;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-consent.show {
+  transform: translateY(0);
+}
+
+.cookie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cookie-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cookie-buttons .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
 }
 
 /* ------------------------------
@@ -160,7 +226,29 @@
 @media (max-width: 992px) {
 }
 @media (max-width: 768px) {
+  .cookie-consent {
+    padding: 1rem;
+  }
+
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .cookie-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
   .main-thankyou-onboarding {
+    .hero {
+      h1,
+      p,
+      .hero-content {
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+    }
     .hero {
       .hero-content {
         margin-top: 3rem;
