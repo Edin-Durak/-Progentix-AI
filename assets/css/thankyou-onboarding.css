@@ -1,0 +1,15 @@
+.thankyou-onboarding-page {
+  .header {
+    width: fit-content;
+
+    .header-inner {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn-tertiary {
+      font-size: 1rem;
+      margin-top: 2px;
+    }
+  }
+}
