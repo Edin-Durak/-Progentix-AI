@@ -36,7 +36,7 @@
     .calendar-container {
       max-width: 800px;
       margin: 0 auto;
-      background: white;
+      background: var(--color-primary);
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(89, 46, 131, 0.1);
       overflow: hidden;
@@ -47,9 +47,6 @@
   .questions-section {
     text-align: center;
     background-color: var(--color-primary);
-  }
-
-  .questions-section {
     p {
       color: var(--color-surface);
       font-size: 1.74375rem;

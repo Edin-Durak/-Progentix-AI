@@ -25,6 +25,234 @@
       max-width: 500px;
       margin: 0 auto;
       font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .hero-content {
+      margin-top: 4rem;
+
+      .hero-content-flex {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+        align-items: start;
+        margin: 0 auto;
+      }
+
+      .hero-text-content {
+        text-align: left;
+        max-width: 400px;
+
+        p {
+          max-width: none;
+          margin: 0 0 1.5rem 0;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin: 2rem 0 1rem 0;
+          color: var(--color-text);
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1rem 0;
+
+          li {
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 1.25rem;
+            line-height: 1;
+
+            &::before {
+              content: "•";
+              position: absolute;
+              left: 0;
+              color: var(--color-primary);
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .hero-booking-widget {
+        background: var(--color-primary);
+        border-radius: 12px;
+        padding: 2rem;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1.5;
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          min-height: 350px;
+          border: none;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  .video-section {
+    .video-background-container {
+      width: 90%;
+      max-width: 1900px;
+      margin: 0 auto 0.5rem;
+      opacity: 1;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .video-background-video {
+      border-radius: 20px;
+    }
+  }
+
+  .questions-section {
+    text-align: center;
+    background-color: var(--color-primary);
+    p {
+      color: var(--color-surface);
+      font-size: 1.74375rem;
+      line-height: 1.66;
+      margin: 1rem auto 2rem;
+      max-width: 700px;
+    }
+
+    .questions-cta {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    a {
+      min-width: 200px;
+    }
+  }
+}
+
+/* ------------------------------
+   Desktop-first breakpoints (downscaling)
+------------------------------ */
+@media (max-width: 1440px) {
+}
+@media (max-width: 1100px) {
+  .main-thankyou-onboarding {
+    & .hero {
+      & .hero-content {
+        .hero-content-flex {
+          flex-direction: column;
+          gap: 2rem;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+  .main-thankyou-onboarding {
+    .hero {
+      .hero-content {
+        margin-top: 3rem;
+
+        .hero-content-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 0 1rem;
+        }
+
+        .hero-text-content {
+          text-align: center;
+
+          p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+          }
+
+          h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem 0;
+          }
+
+          ul {
+            margin-bottom: 1.5rem;
+
+            li {
+              font-size: 1rem;
+              margin-bottom: 0.5rem;
+              padding-left: 1.25rem;
+            }
+          }
+        }
+
+        .hero-booking-widget {
+          padding: 1.5rem;
+          min-height: 300px;
+
+          iframe {
+            min-height: 250px;
+          }
+        }
+      }
+    }
+    .questions-section {
+      p {
+        font-size: 1.4rem;
+      }
+
+      .questions-cta {
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-thankyou-onboarding {
+    .hero {
+      .hero-content {
+        .hero-content-grid {
+          gap: 1.5rem;
+        }
+
+        .hero-text-content {
+          p {
+            font-size: 0.95rem;
+          }
+
+          h3 {
+            font-size: 1.125rem;
+          }
+
+          ul li {
+            font-size: 0.95rem;
+          }
+        }
+
+        .hero-booking-widget {
+          padding: 1rem;
+          min-height: 250px;
+
+          iframe {
+            min-height: 200px;
+          }
+        }
+      }
+    }
+    .questions-section {
+      p {
+        font-size: 1.2rem;
+      }
     }
   }
 }
