@@ -55,7 +55,7 @@
     <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="frame-src 'self' https://api.leadconnectorhq.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com; connect-src 'self' https://api.leadconnectorhq.com;"
+      content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com; connect-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com;"
     />
 
     <!-- Preload Critical Resources -->
@@ -144,18 +144,22 @@
       >
         <h2 id="video-section-heading" hidden>Video Section</h2>
         <div class="video-background-container">
-          <video
-            class="video-background-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="./assets/img/video-thumbnail-img.jpg"
-            preload="metadata"
-          >
-            <!-- Optimized video source -->
-            <source src="./assets/videos/RecoveryRoute.mp4" type="video/mp4" />
-          </video>
+          <div style="padding: 56.25% 0 0 0; position: relative">
+            <iframe
+              src="https://player.vimeo.com/video/1109841811?autoplay=1&muted=1"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+              "
+              title="Request a Demo Landing Page Video"
+            ></iframe>
+          </div>
         </div>
       </section>
 
@@ -177,5 +181,6 @@
     </main>
 
     <script src="assets/js/request-demo.js" defer></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
   </body>
 </html>
