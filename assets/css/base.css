@@ -508,8 +508,11 @@ h3 {
 .modal-content {
   padding: 2rem;
   text-align: center;
+  min-height: 850px;
 
   .cookie-buttons {
+    justify-content: center;
+
     .btn-secondary {
       border: 1px solid var(--color-primary);
     }
@@ -535,6 +538,38 @@ h3 {
   border: none;
 }
 
+/* Modal loading state */
+.modal-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.modal-loading .loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e6e0ef;
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Modal responsive styles */
 @media (max-width: 768px) {
   .modal-container {
@@ -544,6 +579,7 @@ h3 {
 
   .modal-content {
     padding: 1.5rem;
+    min-height: auto;
   }
 
   .modal-iframe-container {

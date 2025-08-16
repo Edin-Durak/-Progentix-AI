@@ -345,6 +345,10 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
       const iframePlaceholder = document.getElementById("iframe-placeholder");
+      const cookieConsentMessage = document.getElementById(
+        "cookie-consent-message"
+      );
+      const modalLoading = document.getElementById("modal-loading");
       let iframeLoaded = false;
       let thirdPartyScriptLoaded = false;
 
@@ -352,31 +356,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Check cookie consent
       const cookieChoice = localStorage.getItem("cookie-consent");
-      if (cookieChoice !== "accepted") {
-        console.log("Cookies not accepted, cannot load third-party content");
-        return;
-      }
+      if (cookieChoice === "accepted") {
+        // Cookies accepted - show loading animation
+        if (cookieConsentMessage) {
+          cookieConsentMessage.style.display = "none";
+        }
+        if (modalLoading) {
+          modalLoading.style.display = "flex";
+        }
 
-      // Load iframe
-      const dataSrc = iframe.getAttribute("data-src");
-      if (dataSrc && !iframeLoaded) {
-        iframe.setAttribute("src", dataSrc);
-        iframeLoaded = true;
-      }
+        // Load iframe
+        const dataSrc = iframe.getAttribute("data-src");
+        if (dataSrc && !iframeLoaded) {
+          iframe.setAttribute("src", dataSrc);
+          iframeLoaded = true;
+        }
 
-      // Load third-party script only when needed
-      if (!thirdPartyScriptLoaded) {
-        const script = document.createElement("script");
-        script.src = "https://link.msgsndr.com/js/form_embed.js";
-        script.async = true;
-        document.head.appendChild(script);
-        thirdPartyScriptLoaded = true;
-      }
+        // Load third-party script only when needed
+        if (!thirdPartyScriptLoaded) {
+          const script = document.createElement("script");
+          script.src = "https://link.msgsndr.com/js/form_embed.js";
+          script.async = true;
+          document.head.appendChild(script);
+          thirdPartyScriptLoaded = true;
+        }
 
-      // Hide placeholder after iframe loads
-      iframe.addEventListener("load", function () {
-        iframePlaceholder.classList.add("hidden");
-      });
+        // Wait 2 seconds, then hide loading and show iframe
+        setTimeout(() => {
+          if (modalLoading) {
+            modalLoading.style.display = "none";
+          }
+          if (iframePlaceholder) {
+            iframePlaceholder.classList.add("hidden");
+          }
+          // Fade in the iframe
+          iframe.style.opacity = "1";
+        }, 2000);
+      } else {
+        // Cookies not accepted - show cookie consent message
+        console.log("Cookies not accepted, showing consent message");
+        if (cookieConsentMessage) {
+          cookieConsentMessage.style.display = "block";
+        }
+        if (modalLoading) {
+          modalLoading.style.display = "none";
+        }
+      }
     }, 100);
   }
 
@@ -450,14 +475,23 @@ document.addEventListener("DOMContentLoaded", function () {
 function loadIframeForm() {
   const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
   const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const cookieConsentMessage = document.getElementById(
+    "cookie-consent-message"
+  );
+  const modalLoading = document.getElementById("modal-loading");
 
   if (!iframe || !iframePlaceholder) return;
 
   // Set cookie consent for LeadConnector
   localStorage.setItem("leadconnector-cookies-accepted", "true");
 
-  // Hide placeholder
-  iframePlaceholder.classList.add("hidden");
+  // Hide cookie consent message and show loading
+  if (cookieConsentMessage) {
+    cookieConsentMessage.style.display = "none";
+  }
+  if (modalLoading) {
+    modalLoading.style.display = "flex";
+  }
 
   // Load iframe
   const dataSrc = iframe.getAttribute("data-src");
@@ -470,6 +504,18 @@ function loadIframeForm() {
   script.src = "https://link.msgsndr.com/js/form_embed.js";
   script.async = true;
   document.head.appendChild(script);
+
+  // Wait 2 seconds, then hide loading and show iframe
+  setTimeout(() => {
+    if (modalLoading) {
+      modalLoading.style.display = "none";
+    }
+    if (iframePlaceholder) {
+      iframePlaceholder.classList.add("hidden");
+    }
+    // Fade in the iframe
+    iframe.style.opacity = "1";
+  }, 2000);
 }
 
 function hideIframePlaceholder() {

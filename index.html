@@ -765,19 +765,32 @@
           <h2 id="modal-title">Try Proptix For Free</h2>
           <div class="modal-iframe-container">
             <div id="iframe-placeholder" class="iframe-placeholder">
-              <p style="font-size: 1.2rem; text-align: center">
-                Please accept cookies to load the form...
-              </p>
-              <div class="cookie-buttons">
-                <button class="btn btn-primary" onclick="loadIframeForm()">
-                  Accept
-                </button>
-                <button
-                  class="btn btn-secondary"
-                  onclick="hideIframePlaceholder()"
-                >
-                  Decline
-                </button>
+              <!-- Cookie consent message (shown when cookies not accepted) -->
+              <div id="cookie-consent-message" class="cookie-consent-message">
+                <p style="font-size: 1.2rem; text-align: center">
+                  Please accept cookies to load the form...
+                </p>
+                <div class="cookie-buttons">
+                  <button class="btn btn-primary" onclick="loadIframeForm()">
+                    Accept
+                  </button>
+                  <button
+                    class="btn btn-secondary"
+                    onclick="hideIframePlaceholder()"
+                  >
+                    Decline
+                  </button>
+                </div>
+              </div>
+
+              <!-- Loading animation (shown when cookies are accepted) -->
+              <div
+                id="modal-loading"
+                class="modal-loading"
+                style="display: none"
+              >
+                <div class="loading-spinner"></div>
+                <p>Loading form...</p>
               </div>
             </div>
             <iframe
@@ -787,6 +800,8 @@
                 height: 100%;
                 border: none;
                 border-radius: 3px;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
               "
               id="inline-o1BMyrgvIR7zUg4daTCg"
               title="Proptix Free Rego Form"
