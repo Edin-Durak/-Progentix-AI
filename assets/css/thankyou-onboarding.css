@@ -13,3 +13,18 @@
     }
   }
 }
+
+.main-thankyou-onboarding {
+  .hero {
+    text-align: center;
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    p {
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+    }
+  }
+}
