@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(
       ".video-section p, .video-section h2, .video-section .btn"
     ),
+    // Calendar section
+    ...document.querySelectorAll(
+      ".calendar-section h2, .calendar-section p, .calendar-container"
+    ),
     // Questions section
     ...document.querySelectorAll(
       ".questions-section h2, .questions-section p, .questions-cta"
@@ -50,9 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Simple reveal animation for hero and first video section on load
   const heroAndFirstVideoElements = [
     ...document.querySelectorAll(".hero h1, .hero p"),
-    ...document.querySelectorAll(
-      ".first-video-section .video-background-container"
-    ),
+    ...document.querySelectorAll(".video-section .video-background-container"),
   ];
 
   // Animate hero and first video elements on load

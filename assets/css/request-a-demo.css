@@ -9,9 +9,9 @@
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     p {
-      max-width: 580px;
+      max-width: 680px;
       margin: 1rem auto 0;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
   }
 
@@ -27,6 +27,20 @@
 
     .video-background-video {
       border-radius: 20px;
+    }
+  }
+
+  .calendar-section {
+    text-align: center;
+
+    .calendar-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(89, 46, 131, 0.1);
+      overflow: hidden;
+      padding: 2rem;
     }
   }
 
@@ -69,6 +83,24 @@
 }
 @media (max-width: 768px) {
   .main-request-a-demo {
+    .calendar-section {
+      padding: 2rem 0;
+
+      .calendar-title {
+        font-size: 2rem;
+      }
+
+      .calendar-description {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+      }
+
+      .calendar-container {
+        margin: 0 1rem;
+        padding: 1rem;
+      }
+    }
+
     .questions-section {
       p {
         font-size: 1.4rem;
