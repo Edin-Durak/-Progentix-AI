@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Animate hero elements on load (not scroll-triggered)
+  // Animate hero elements on load (not scroll-triggered) - optimized for LCP
   heroElements.forEach((element, index) => {
     if (element) {
-      // Faster animations on mobile
+      // Much faster animations for better LCP
       const isMobile = window.innerWidth <= 768;
-      const baseDelay = isMobile ? 100 : 300;
-      const staggerDelay = isMobile ? 100 : 200;
+      const baseDelay = isMobile ? 50 : 100;
+      const staggerDelay = isMobile ? 50 : 100;
 
       setTimeout(() => {
         element.style.opacity = "1";

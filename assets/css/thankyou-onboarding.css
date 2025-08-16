@@ -22,7 +22,8 @@
       margin-bottom: 2rem;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+      will-change: opacity, transform;
     }
 
     p {
@@ -35,14 +36,16 @@
     .hero-subtitle {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+      will-change: opacity, transform;
     }
 
     .hero-content {
       margin-top: 4rem;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+      will-change: opacity, transform;
 
       .hero-content-flex {
         display: flex;
