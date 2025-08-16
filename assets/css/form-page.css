@@ -1,6 +1,7 @@
 .form-page {
   .header {
     background-color: transparent;
+    position: static;
 
     .logo {
       flex-direction: column;
