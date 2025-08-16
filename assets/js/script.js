@@ -354,13 +354,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!iframe || !iframePlaceholder) return;
 
+      // Reset modal state first
+      if (iframePlaceholder) {
+        iframePlaceholder.classList.remove("hidden");
+      }
+      if (cookieConsentMessage) {
+        cookieConsentMessage.style.display = "none";
+      }
+      if (modalLoading) {
+        modalLoading.style.display = "none";
+      }
+      if (iframe) {
+        iframe.style.opacity = "0";
+      }
+
       // Check cookie consent
       const cookieChoice = localStorage.getItem("cookie-consent");
       if (cookieChoice === "accepted") {
         // Cookies accepted - show loading animation
-        if (cookieConsentMessage) {
-          cookieConsentMessage.style.display = "none";
-        }
         if (modalLoading) {
           modalLoading.style.display = "flex";
         }
@@ -397,9 +408,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Cookies not accepted, showing consent message");
         if (cookieConsentMessage) {
           cookieConsentMessage.style.display = "block";
-        }
-        if (modalLoading) {
-          modalLoading.style.display = "none";
         }
       }
     }, 100);
@@ -473,17 +481,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Iframe form cookie consent handling
 function loadIframeForm() {
+  console.log("loadIframeForm called");
+
   const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
   const iframePlaceholder = document.getElementById("iframe-placeholder");
   const cookieConsentMessage = document.getElementById(
     "cookie-consent-message"
   );
   const modalLoading = document.getElementById("modal-loading");
+  const mainCookieBanner = document.getElementById("cookie-consent");
 
-  if (!iframe || !iframePlaceholder) return;
+  if (!iframe || !iframePlaceholder) {
+    console.log("Missing iframe or iframePlaceholder");
+    return;
+  }
 
-  // Set cookie consent for LeadConnector
+  console.log("Setting cookie consent to accepted");
+  // Set cookie consent for LeadConnector and main site
   localStorage.setItem("leadconnector-cookies-accepted", "true");
+  localStorage.setItem("cookie-consent", "accepted");
+
+  // Check if main cookie banner has 'show' class and remove it
+  if (mainCookieBanner && mainCookieBanner.classList.contains("show")) {
+    console.log("Removing show class from main cookie banner");
+    mainCookieBanner.classList.remove("show");
+    mainCookieBanner.setAttribute("aria-hidden", "true");
+  }
 
   // Hide cookie consent message and show loading
   if (cookieConsentMessage) {
@@ -519,8 +542,27 @@ function loadIframeForm() {
 }
 
 function hideIframePlaceholder() {
+  console.log("hideIframePlaceholder called");
+
   const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const modalOverlay = document.getElementById("modal-overlay");
+  const mainCookieBanner = document.getElementById("cookie-consent");
+
   if (iframePlaceholder) {
     iframePlaceholder.classList.add("hidden");
+  }
+
+  // Check if main cookie banner doesn't have 'show' class and add it
+  if (mainCookieBanner && !mainCookieBanner.classList.contains("show")) {
+    console.log("Adding show class to main cookie banner");
+    mainCookieBanner.classList.add("show");
+    mainCookieBanner.setAttribute("aria-hidden", "false");
+  }
+
+  // Close the modal when user declines
+  if (modalOverlay) {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = ""; // Restore scroll
   }
 }
