@@ -84,7 +84,7 @@
       font-size: 1.1rem;
     }
     .sage-steps-container {
-      height: 4000px; /* Increased for longer scroll duration */
+      height: 3000px;
     }
 
     .sage-steps-wrapper {
