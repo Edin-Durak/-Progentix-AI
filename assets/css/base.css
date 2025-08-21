@@ -295,6 +295,107 @@ h3 {
     display: none;
   }
 }
+
+/* ------------------------------
+   Footer Styles
+------------------------------ */
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  margin-top: 0;
+  border-top: 1px solid var(--color-accent-1);
+
+  .container {
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-surface);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    height: 40px;
+
+    img {
+      margin-top: -10px;
+    }
+  }
+
+  .footer-brand .logo:hover {
+    opacity: 0.9;
+  }
+
+  .footer-tagline {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--color-accent-1);
+    margin: 0;
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-nav-section h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-surface);
+  }
+
+  .footer-nav-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-nav-section a {
+    color: var(--color-accent-1);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-nav-section a:hover {
+    color: var(--color-surface);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--color-accent-1);
+    margin: 0;
+  }
+}
+
 /* ------------------------------
    Desktop-first breakpoints (downscaling)
 ------------------------------ */
@@ -305,6 +406,18 @@ h3 {
 @media (max-width: 992px) {
   .header {
     max-width: 95%;
+  }
+
+  .footer {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-nav {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
   }
 }
 @media (max-width: 768px) {
