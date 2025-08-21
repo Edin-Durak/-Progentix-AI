@@ -102,7 +102,7 @@
   .video-section-cta-overlay {
     .video-background-container {
       position: relative;
-
+      /* Commented out for now
       &::after {
         content: "";
         position: absolute;
@@ -116,20 +116,24 @@
         border-radius: 20px;
         pointer-events: none;
       }
+      */
     }
 
     .video-section-cta-overlay-content {
       position: absolute;
-      top: 80px;
-      left: 80px;
+      top: 20px;
+      left: auto;
+      right: 20px;
       font-size: 2.2rem;
       line-height: 1.1;
       color: var(--color-white);
       z-index: 2;
+      text-align: right;
     }
 
     h2 {
       margin-bottom: 1rem;
+      color: var(--color-primary);
     }
   }
 
@@ -479,6 +483,7 @@
       .video-section-cta-overlay-content {
         position: static;
         margin-top: 1rem;
+        text-align: left;
       }
       h2 {
         color: var(--color-primary);
