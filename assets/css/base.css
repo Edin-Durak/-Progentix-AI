@@ -230,7 +230,7 @@ h3 {
   background-color: #e8e0f0;
   border-radius: 15px;
   padding: 0.5rem 1rem;
-  max-width: 720px;
+  max-width: 600px;
   margin: 1rem auto;
   position: sticky;
   top: 2rem;
@@ -252,6 +252,11 @@ h3 {
     gap: var(--space-2xs);
     font-size: 1rem;
     color: var(--color-primary);
+    height: 40px;
+
+    img {
+      margin-top: -6px;
+    }
 
     span {
       padding-top: 3px;
