@@ -53,12 +53,17 @@
   .video-section {
     .video-background-container {
       width: 90%;
-      max-width: 1900px;
+      max-width: 1000px;
       margin: 0 auto 0.5rem;
+    }
+
+    .video-background-container.one {
+      max-width: 920px;
     }
 
     .video-background-video {
       border-radius: 20px;
+      cursor: pointer;
     }
   }
 
@@ -82,9 +87,9 @@
 
     p {
       position: absolute;
-      top: 80px;
+      top: 20px;
       left: auto;
-      right: 40px;
+      right: 20px;
       max-width: 500px;
       font-size: 2.2rem;
       line-height: 1.1;
