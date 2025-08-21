@@ -81,6 +81,10 @@
 
   .what-you-get-section {
     text-align: center;
+
+    .container {
+      max-width: 1400px;
+    }
     h2 {
       color: var(--color-primary);
       margin-bottom: 1rem;
@@ -117,7 +121,8 @@
     }
 
     .step-image {
-      flex: 1.5;
+      display: flex;
+      justify-content: center;
     }
 
     .step-content.right {
@@ -159,6 +164,13 @@
 @media (max-width: 1440px) {
 }
 @media (max-width: 1200px) {
+  .starter-page {
+    .what-you-get-section {
+      .step-image {
+        flex: 1.5;
+      }
+    }
+  }
 }
 @media (max-width: 992px) {
   .main-starter {
