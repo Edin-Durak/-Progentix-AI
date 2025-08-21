@@ -65,6 +65,36 @@
       border-radius: 20px;
       cursor: pointer;
     }
+
+    .first-video {
+      /* Prevent layout shift */
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+      max-width: 1000px;
+      max-height: 567px;
+    }
+
+    .video-text-overlay {
+      /* Prevent layout shift */
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+      max-width: 920px;
+      max-height: 520px;
+    }
+
+    .video-cta-overlay {
+      /* Prevent layout shift */
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+      max-width: 999.98px;
+      max-height: 553.44px;
+    }
   }
 
   .video-section-text-overlay {
