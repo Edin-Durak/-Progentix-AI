@@ -134,7 +134,7 @@
   .video-section {
     .video-background-container {
       width: 90%;
-      max-width: 1900px;
+      max-width: 1000px;
       margin: 0 auto 0.5rem;
       opacity: 0;
       transform: translateY(30px);
@@ -144,6 +144,13 @@
 
     .video-background-video {
       border-radius: 20px;
+      cursor: pointer;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+      max-width: 1000px;
+      max-height: 567px;
     }
   }
 
