@@ -74,6 +74,7 @@
       .hero-text-content {
         text-align: left;
         max-width: 400px;
+        align-self: flex-end;
 
         p {
           max-width: none;
@@ -192,6 +193,10 @@
           flex-direction: column;
           gap: 2rem;
           align-items: center;
+
+          .hero-text-content {
+            align-self: center;
+          }
         }
       }
     }
