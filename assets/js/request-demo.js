@@ -68,6 +68,73 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Lazy loading for Vimeo video
+document.addEventListener("DOMContentLoaded", function () {
+  const playButton = document.getElementById("play-video-btn");
+  const videoPlaceholder = document.getElementById("video-placeholder");
+  const videoIframeContainer = document.getElementById(
+    "video-iframe-container"
+  );
+  const vimeoIframe = document.getElementById("vimeo-iframe");
+
+  if (!playButton || !videoPlaceholder || !videoIframeContainer || !vimeoIframe)
+    return;
+
+  let vimeoLoaded = false;
+  let vimeoScriptLoaded = false;
+
+  function loadVimeoVideo() {
+    if (vimeoLoaded) return;
+
+    // Load Vimeo script only when needed
+    if (!vimeoScriptLoaded) {
+      const script = document.createElement("script");
+      script.src = "https://player.vimeo.com/api/player.js";
+      script.async = true;
+      document.head.appendChild(script);
+      vimeoScriptLoaded = true;
+    }
+
+    // Load the iframe
+    const dataSrc = vimeoIframe.getAttribute("data-src");
+    if (dataSrc) {
+      vimeoIframe.setAttribute("src", dataSrc);
+    }
+
+    // Show iframe and hide placeholder
+    videoPlaceholder.style.display = "none";
+    videoIframeContainer.style.display = "block";
+
+    vimeoLoaded = true;
+  }
+
+  // Load video on play button click
+  playButton.addEventListener("click", loadVimeoVideo);
+
+  // Load video on Enter key press
+  playButton.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      loadVimeoVideo();
+    }
+  });
+
+  // Load video when it comes into view (optional - for better UX)
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !vimeoLoaded) {
+          // Only load if user hasn't clicked play button yet
+          // This prevents automatic loading but keeps the option open
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  videoObserver.observe(videoPlaceholder);
+});
+
 // Button hover animations
 document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.querySelectorAll(".btn-secondary");
@@ -195,4 +262,31 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieConsent.classList.remove("show");
     cookieConsent.setAttribute("aria-hidden", "true");
   });
+});
+
+// Lazy load LeadConnector script only when calendar comes into view
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarContainer = document.querySelector(".calendar-container");
+  let leadConnectorScriptLoaded = false;
+
+  if (!calendarContainer) return;
+
+  const calendarObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !leadConnectorScriptLoaded) {
+          // Load LeadConnector script only when calendar is visible
+          const script = document.createElement("script");
+          script.src = "https://link.msgsndr.com/js/form_embed.js";
+          script.async = true;
+          document.head.appendChild(script);
+          leadConnectorScriptLoaded = true;
+          calendarObserver.unobserve(entry.target); // Stop observing once loaded
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  calendarObserver.observe(calendarContainer);
 });

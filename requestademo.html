@@ -60,8 +60,16 @@
       content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com; connect-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com;"
     />
 
+    <!-- Preconnect to third-party origins for better performance -->
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="preconnect" href="https://api.leadconnectorhq.com" />
+    <link rel="preconnect" href="https://link.msgsndr.com" />
+    <link rel="dns-prefetch" href="https://player.vimeo.com" />
+    <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
+
     <!-- Preload Critical Resources -->
     <link rel="preload" href="./assets/css/base.css" as="style" />
+    <link rel="preload" href="./assets/css/request-a-demo.css" as="style" />
     <link
       rel="preload"
       href="./assets/fonts/Poppins/poppins-regular-webfont.woff2"
@@ -75,6 +83,12 @@
       as="font"
       type="font/woff2"
       crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/img/logo.webp"
+      as="image"
+      type="image/webp"
     />
 
     <!-- Stylesheets -->
@@ -107,6 +121,8 @@
             alt="Progentix‑AI"
             width="40"
             height="40"
+            loading="eager"
+            decoding="async"
           />
           <span>proptix.ai</span>
         </a>
@@ -142,21 +158,61 @@
       <section class="video-section" aria-labelledby="video-section-heading">
         <h2 id="video-section-heading" hidden>Video Section</h2>
         <div class="video-background-container">
-          <div style="padding: 56.25% 0 0 0; position: relative">
-            <iframe
-              src="https://player.vimeo.com/video/1109841811?autoplay=1&muted=1"
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border-radius: 20px;
-              "
-              title="Request a Demo Landing Page Video"
-            ></iframe>
+          <div class="video-placeholder" id="video-placeholder">
+            <div class="video-thumbnail">
+              <img
+                src="./assets/img/waves-thumbnail-img.webp"
+                alt="Proptix Demo Video Thumbnail"
+                width="1000"
+                height="563"
+                loading="eager"
+              />
+              <button
+                class="play-button"
+                id="play-video-btn"
+                aria-label="Play demo video"
+              >
+                <svg
+                  width="80"
+                  height="80"
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="40"
+                    cy="40"
+                    r="40"
+                    fill="rgba(89, 46, 131, 0.9)"
+                  />
+                  <path d="M32 24L56 40L32 56V24Z" fill="white" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div
+            class="video-iframe-container"
+            id="video-iframe-container"
+            style="display: none"
+          >
+            <div style="padding: 56.25% 0 0 0; position: relative">
+              <iframe
+                id="vimeo-iframe"
+                data-src="https://player.vimeo.com/video/1109841811?autoplay=1&muted=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 20px;
+                "
+                title="Request a Demo Landing Page Video"
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -171,6 +227,7 @@
               scrolling="no"
               title="Book Demo Calendar"
               id="booking-calendar-iframe"
+              loading="lazy"
             ></iframe>
           </div>
         </div>
@@ -181,12 +238,12 @@
           <h2 id="questions-heading" hidden>Questions section</h2>
           <h2 class="questions-title">Still have questions?</h2>
           <p>
-            We get it, this isn’t business as usual. Whether you’re curious
+            We get it, this isn't business as usual. Whether you're curious
             about Sage, the tech behind it, or how Proptix fits your strategy,
-            we’re here to help. Reach out and let’s talk deals, not theory.
+            we're here to help. Reach out and let's talk deals, not theory.
           </p>
           <div class="questions-cta">
-            <a href="#" class="btn btn-secondary">FAQ’s</a>
+            <a href="#" class="btn btn-secondary">FAQ's</a>
             <a href="#" class="btn btn-secondary">Get In Touch</a>
           </div>
         </div>
@@ -257,7 +314,5 @@
     </footer>
 
     <script src="assets/js/request-demo.js" defer></script>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </body>
 </html>
