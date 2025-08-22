@@ -144,13 +144,6 @@
 
     .video-background-video {
       border-radius: 20px;
-      cursor: pointer;
-      object-fit: cover;
-      aspect-ratio: 16/9;
-      width: 100%;
-      height: auto;
-      max-width: 1000px;
-      max-height: 567px;
     }
   }
 
