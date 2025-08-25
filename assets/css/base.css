@@ -609,9 +609,7 @@ h3 {
         border-radius: 0;
       }
 
-      .dropdown-toggle:hover,
-      .dropdown-toggle:focus,
-      .dropdown-toggle:active {
+      .dropdown-toggle[aria-expanded="true"] {
         border-bottom: 2px solid var(--color-primary);
       }
 
