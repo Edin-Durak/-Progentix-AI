@@ -246,6 +246,59 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Dropdown functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const dropdown = this.closest(".dropdown");
+      const isActive = dropdown.classList.contains("active");
+
+      // Close all other dropdowns
+      document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
+        if (otherDropdown !== dropdown) {
+          otherDropdown.classList.remove("active");
+          otherDropdown
+            .querySelector(".dropdown-toggle")
+            .setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Toggle current dropdown
+      dropdown.classList.toggle("active");
+      this.setAttribute("aria-expanded", !isActive);
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".dropdown")) {
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("active");
+        dropdown
+          .querySelector(".dropdown-toggle")
+          .setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+
+  // Close dropdowns when pressing Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("active");
+        dropdown
+          .querySelector(".dropdown-toggle")
+          .setAttribute("aria-expanded", "false");
+      });
+    }
+  });
+});
+
 // Mobile navigation functionality
 document.addEventListener("DOMContentLoaded", function () {
   const hamburgerMenu = document.querySelector(".hamburger-menu");
@@ -275,6 +328,14 @@ document.addEventListener("DOMContentLoaded", function () {
   navLinks.forEach((link) => {
     link.addEventListener("click", function () {
       nav.classList.remove("active");
+
+      // Close all dropdowns when mobile menu is closed
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("active");
+        dropdown
+          .querySelector(".dropdown-toggle")
+          .setAttribute("aria-expanded", "false");
+      });
 
       // Only show hamburger on mobile
       if (window.innerWidth <= 768) {

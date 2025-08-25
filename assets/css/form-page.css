@@ -97,6 +97,7 @@
     .form-container {
       margin: 0 1rem;
       padding: 1rem;
+      min-height: 700px; /* Prevent layout shift */
     }
 
     iframe {
