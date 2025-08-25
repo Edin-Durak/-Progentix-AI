@@ -608,6 +608,7 @@ h3 {
         font-size: 1.5rem;
         border-bottom: none;
         border-radius: 0;
+        margin-top: 0;
       }
 
       .dropdown-toggle[aria-expanded="true"] {
