@@ -68,6 +68,127 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Modal functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const modalOverlay = document.getElementById("modal-overlay");
+  const modalClose = document.querySelector(".modal-close");
+  const modalTriggers = document.querySelectorAll(
+    '[data-modal-trigger="try-free"]'
+  );
+
+  if (!modalOverlay || !modalClose) return;
+
+  // Open modal
+  function openModal() {
+    modalOverlay.classList.add("active");
+    modalOverlay.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+
+    // Trigger iframe loading
+    setTimeout(() => {
+      const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+      const iframePlaceholder = document.getElementById("iframe-placeholder");
+      const cookieConsentMessage = document.getElementById(
+        "cookie-consent-message"
+      );
+      const modalLoading = document.getElementById("modal-loading");
+      let iframeLoaded = false;
+      let thirdPartyScriptLoaded = false;
+
+      if (!iframe || !iframePlaceholder) return;
+
+      // Reset modal state first
+      if (iframePlaceholder) {
+        iframePlaceholder.classList.remove("hidden");
+      }
+      if (cookieConsentMessage) {
+        cookieConsentMessage.style.display = "none";
+      }
+      if (modalLoading) {
+        modalLoading.style.display = "none";
+      }
+      if (iframe) {
+        iframe.style.opacity = "0";
+      }
+
+      // Check cookie consent
+      const cookieChoice = localStorage.getItem("cookie-consent");
+      if (cookieChoice === "accepted") {
+        // Cookies accepted - show loading animation
+        if (modalLoading) {
+          modalLoading.style.display = "flex";
+        }
+
+        // Load iframe
+        const dataSrc = iframe.getAttribute("data-src");
+        if (dataSrc && !iframeLoaded) {
+          iframe.setAttribute("src", dataSrc);
+          iframeLoaded = true;
+        }
+
+        // Load third-party script only when needed
+        if (!thirdPartyScriptLoaded) {
+          const script = document.createElement("script");
+          script.src = "https://link.msgsndr.com/js/form_embed.js";
+          script.async = true;
+          document.head.appendChild(script);
+          thirdPartyScriptLoaded = true;
+        }
+
+        // Wait 2 seconds, then hide loading and show iframe
+        setTimeout(() => {
+          if (modalLoading) {
+            modalLoading.style.display = "none";
+          }
+          if (iframePlaceholder) {
+            iframePlaceholder.classList.add("hidden");
+          }
+          // Fade in the iframe
+          iframe.style.opacity = "1";
+        }, 2000);
+      } else {
+        // Cookies not accepted - show cookie consent message
+        console.log("Cookies not accepted, showing consent message");
+        if (cookieConsentMessage) {
+          cookieConsentMessage.style.display = "block";
+        }
+      }
+    }, 100);
+  }
+
+  // Close modal
+  function closeModal() {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = ""; // Restore scroll
+  }
+
+  // Event listeners for opening modal
+  modalTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Event listener for closing modal
+  modalClose.addEventListener("click", closeModal);
+
+  // Close modal when clicking outside
+  modalOverlay.addEventListener("click", function (e) {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
+      closeModal();
+    }
+  });
+});
+
 // Lazy loading for Vimeo video
 document.addEventListener("DOMContentLoaded", function () {
   const playButton = document.getElementById("play-video-btn");
