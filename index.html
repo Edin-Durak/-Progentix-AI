@@ -111,7 +111,7 @@
         <button class="hamburger-menu" aria-label="Open navigation menu">
           <img src="./assets/img/hamburger-menu-icon.svg" alt="Menu" />
         </button>
-        <nav class="nav">
+        <nav class="nav" aria-label="Main navigation">
           <button class="close-menu" aria-label="Close navigation menu">
             <img src="./assets/img/close-icon.svg" alt="Close" />
           </button>
@@ -122,7 +122,8 @@
               <button
                 class="dropdown-toggle"
                 aria-expanded="false"
-                aria-haspopup="true"
+                aria-haspopup="listbox"
+                aria-label="Services menu"
               >
                 Services
                 <svg
@@ -131,6 +132,7 @@
                   height="8"
                   viewBox="0 0 12 8"
                   fill="none"
+                  aria-hidden="true"
                 >
                   <path
                     d="M1 1L6 6L11 1"
@@ -141,10 +143,12 @@
                   />
                 </svg>
               </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#flip180" role="menuitem">Flip180</a></li>
-                <li>
-                  <a href="#operator-circle" role="menuitem">Operator Circle</a>
+              <ul class="dropdown-menu" role="listbox" aria-label="Services">
+                <li role="option">
+                  <a href="#flip180">Flip180</a>
+                </li>
+                <li role="option">
+                  <a href="#operator-circle">Operator Circle</a>
                 </li>
               </ul>
             </li>
@@ -162,7 +166,7 @@
         </nav>
       </div>
     </header>
-    <main class="main-home">
+    <main class="main-home" id="main-content">
       <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-inner">
           <h1 id="hero-title">The Property Profit System. Powered by AI.</h1>
