@@ -1,60 +1,3 @@
-// Smooth fade-in animations for revealing elements
-document.addEventListener("DOMContentLoaded", function () {
-  // Elements to animate for privacy page
-  const animateElements = [
-    // Hero section
-    ...document.querySelectorAll(".hero h1, .hero p"),
-    // Privacy content
-    ...document.querySelectorAll(".privacy-text h2, .privacy-text h3, .privacy-text p, .privacy-text ul, .privacy-text ol, .privacy-text table"),
-  ];
-
-  // Set initial state - all elements start hidden
-  animateElements.forEach((element) => {
-    if (element) {
-      element.style.opacity = "0";
-      element.style.transform = "translateY(30px)";
-      element.style.transition =
-        "opacity 0.8s ease-out, transform 0.8s ease-out";
-    }
-  });
-
-  // Intersection Observer for scroll-triggered animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target); // Stop observing once animated
-      }
-    });
-  }, observerOptions);
-
-  // Observe all elements
-  animateElements.forEach((element) => {
-    if (element) {
-      observer.observe(element);
-    }
-  });
-
-  // Simple reveal animation for hero elements on load
-  const heroElements = document.querySelectorAll(".hero h1, .hero p");
-  
-  // Animate hero elements on load
-  heroElements.forEach((element, index) => {
-    if (element) {
-      setTimeout(() => {
-        element.style.opacity = "1";
-        element.style.transform = "translateY(0)";
-      }, 300 + index * 200); // Staggered animation
-    }
-  });
-});
-
 // Modal functionality
 document.addEventListener("DOMContentLoaded", function () {
   const modalOverlay = document.getElementById("modal-overlay");
@@ -176,6 +119,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Button hover animations
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".btn-secondary");
+  buttons.forEach((button) => {
+    button.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-2px)";
+      this.style.opacity = "0.9";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    button.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+});
+
 // Dropdown functionality
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
@@ -217,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Close dropdowns when pressing Escape
-  document.addEventListener("keydown", function (e) => {
+  document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
@@ -347,150 +307,4 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieConsent.classList.remove("show");
     cookieConsent.setAttribute("aria-hidden", "true");
   });
-});
-
-// Global functions for modal iframe handling
-window.loadIframeForm = function() {
-  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
-  const iframePlaceholder = document.getElementById("iframe-placeholder");
-  const modalLoading = document.getElementById("modal-loading");
-  const cookieConsentMessage = document.getElementById("cookie-consent-message");
-
-  if (!iframe || !iframePlaceholder) return;
-
-  // Hide cookie consent message
-  if (cookieConsentMessage) {
-    cookieConsentMessage.style.display = "none";
-  }
-
-  // Show loading animation
-  if (modalLoading) {
-    modalLoading.style.display = "flex";
-  }
-
-  // Load iframe
-  const dataSrc = iframe.getAttribute("data-src");
-  if (dataSrc) {
-    iframe.setAttribute("src", dataSrc);
-  }
-
-  // Load third-party script
-  const script = document.createElement("script");
-  script.src = "https://link.msgsndr.com/js/form_embed.js";
-  script.async = true;
-  document.head.appendChild(script);
-
-  // Wait 2 seconds, then hide loading and show iframe
-  setTimeout(() => {
-    if (modalLoading) {
-      modalLoading.style.display = "none";
-    }
-    if (iframePlaceholder) {
-      iframePlaceholder.classList.add("hidden");
-    }
-    iframe.style.opacity = "1";
-  }, 2000);
-};
-
-window.hideIframePlaceholder = function() {
-  const modalOverlay = document.getElementById("modal-overlay");
-  if (modalOverlay) {
-    modalOverlay.classList.remove("active");
-    modalOverlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-};
-
-// Button hover animations
-document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".btn-secondary, .btn-primary, .btn-tertiary, .btn-black");
-  buttons.forEach((button) => {
-    button.addEventListener("mouseenter", function () {
-      this.style.transform = "translateY(-2px)";
-      this.style.opacity = "0.9";
-      this.style.transition = "transform 0.3s ease-out, opacity 0.3s ease-out";
-    });
-
-    button.addEventListener("mouseleave", function () {
-      this.style.transform = "translateY(0)";
-      this.style.opacity = "1";
-      this.style.transition = "transform 0.3s ease-out, opacity 0.3s ease-out";
-    });
-  });
-});
-
-// Smooth scrolling for anchor links
-document.addEventListener("DOMContentLoaded", function () {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  
-  anchorLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
-      const targetId = this.getAttribute("href");
-      if (targetId === "#" || targetId === "#top") {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-        return;
-      }
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    });
-  });
-});
-
-// Accessibility improvements
-document.addEventListener("DOMContentLoaded", function () {
-  // Add focus indicators for keyboard navigation
-  const focusableElements = document.querySelectorAll(
-    'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-  );
-
-  focusableElements.forEach(element => {
-    element.addEventListener("focus", function () {
-      this.style.outline = "2px solid var(--color-accent-1)";
-      this.style.outlineOffset = "2px";
-    });
-
-    element.addEventListener("blur", function () {
-      this.style.outline = "";
-      this.style.outlineOffset = "";
-    });
-  });
-
-  // Skip to main content link
-  const skipLink = document.createElement("a");
-  skipLink.href = "#main-content";
-  skipLink.textContent = "Skip to main content";
-  skipLink.className = "skip-link";
-  skipLink.style.cssText = `
-    position: absolute;
-    top: -40px;
-    left: 6px;
-    background: var(--color-primary);
-    color: white;
-    padding: 8px;
-    text-decoration: none;
-    border-radius: 4px;
-    z-index: 1000;
-    transition: top 0.3s;
-  `;
-  
-  skipLink.addEventListener("focus", function () {
-    this.style.top = "6px";
-  });
-  
-  skipLink.addEventListener("blur", function () {
-    this.style.top = "-40px";
-  });
-  
-  document.body.insertBefore(skipLink, document.body.firstChild);
 });
