@@ -53,6 +53,11 @@
   margin-bottom: 0.5rem;
 }
 
+.terms-text a {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 /* Contact Information */
 .privacy-contact {
   background: var(--color-primary);

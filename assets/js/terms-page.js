@@ -140,21 +140,26 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
+  if (dropdownToggles.length === 0) return; // Exit if no dropdowns exist
+
   dropdownToggles.forEach((toggle) => {
     toggle.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
       const dropdown = this.closest(".dropdown");
+      if (!dropdown) return; // Exit if no dropdown found
+
       const isActive = dropdown.classList.contains("active");
 
       // Close all other dropdowns
       document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
         if (otherDropdown !== dropdown) {
           otherDropdown.classList.remove("active");
-          otherDropdown
-            .querySelector(".dropdown-toggle")
-            .setAttribute("aria-expanded", "false");
+          const otherToggle = otherDropdown.querySelector(".dropdown-toggle");
+          if (otherToggle) {
+            otherToggle.setAttribute("aria-expanded", "false");
+          }
         }
       });
 
@@ -169,9 +174,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!e.target.closest(".dropdown")) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
+        const toggle = dropdown.querySelector(".dropdown-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "false");
+        }
       });
     }
   });
@@ -181,9 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape") {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
+        const toggle = dropdown.querySelector(".dropdown-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "false");
+        }
       });
     }
   });
@@ -222,9 +229,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // Close all dropdowns when mobile menu is closed
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
+        const toggle = dropdown.querySelector(".dropdown-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "false");
+        }
       });
 
       // Only show hamburger on mobile
@@ -308,3 +316,57 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieConsent.setAttribute("aria-hidden", "true");
   });
 });
+
+// Global functions for modal iframe handling
+window.loadIframeForm = function () {
+  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const modalLoading = document.getElementById("modal-loading");
+  const cookieConsentMessage = document.getElementById(
+    "cookie-consent-message"
+  );
+
+  if (!iframe || !iframePlaceholder) return;
+
+  // Hide cookie consent message
+  if (cookieConsentMessage) {
+    cookieConsentMessage.style.display = "none";
+  }
+
+  // Show loading animation
+  if (modalLoading) {
+    modalLoading.style.display = "flex";
+  }
+
+  // Load iframe
+  const dataSrc = iframe.getAttribute("data-src");
+  if (dataSrc) {
+    iframe.setAttribute("src", dataSrc);
+  }
+
+  // Load third-party script
+  const script = document.createElement("script");
+  script.src = "https://link.msgsndr.com/js/form_embed.js";
+  script.async = true;
+  document.head.appendChild(script);
+
+  // Wait 2 seconds, then hide loading and show iframe
+  setTimeout(() => {
+    if (modalLoading) {
+      modalLoading.style.display = "none";
+    }
+    if (iframePlaceholder) {
+      iframePlaceholder.classList.add("hidden");
+    }
+    iframe.style.opacity = "1";
+  }, 2000);
+};
+
+window.hideIframePlaceholder = function () {
+  const modalOverlay = document.getElementById("modal-overlay");
+  if (modalOverlay) {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+};
