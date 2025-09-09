@@ -1,5 +1,9 @@
 /* Terms of Service Page Styles */
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* Terms Content Section */
 .container {
   padding: 5rem 6rem;

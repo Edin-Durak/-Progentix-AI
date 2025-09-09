@@ -82,8 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function openModal() {
     modalOverlay.classList.add("active");
     modalOverlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden"; // Prevent background scroll
 
+    // Prevent background scroll using CSS class
+    document.body.classList.add("overflow-hidden");
     // Trigger iframe loading
     setTimeout(() => {
       const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
@@ -160,7 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function closeModal() {
     modalOverlay.classList.remove("active");
     modalOverlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = ""; // Restore scroll
+    // Restore scroll by removing CSS class
+    document.body.classList.remove("overflow-hidden");
   }
 
   // Event listeners for opening modal

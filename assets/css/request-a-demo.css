@@ -1,3 +1,7 @@
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .main-request-a-demo {
   .hero {
     text-align: center;

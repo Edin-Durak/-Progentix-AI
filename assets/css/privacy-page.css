@@ -1,5 +1,9 @@
 /* Privacy Policy Page Styles */
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* Privacy Content Section */
 .container {
   padding: 5rem 6rem;

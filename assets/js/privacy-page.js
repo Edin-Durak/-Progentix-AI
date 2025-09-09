@@ -6,13 +6,20 @@ document.addEventListener("DOMContentLoaded", function () {
     '[data-modal-trigger="try-free"]'
   );
 
-  if (!modalOverlay || !modalClose) return;
+  if (!modalOverlay || !modalClose) {
+    console.log("Modal elements not found:", { modalOverlay, modalClose });
+    return;
+  }
+
+  console.log("Modal triggers found:", modalTriggers.length);
 
   // Open modal
   function openModal() {
     modalOverlay.classList.add("active");
     modalOverlay.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden"; // Prevent background scroll
+
+    // Prevent background scroll using CSS class
+    document.body.classList.add("overflow-hidden");
 
     // Trigger iframe loading
     setTimeout(() => {
@@ -90,12 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
   function closeModal() {
     modalOverlay.classList.remove("active");
     modalOverlay.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = ""; // Restore scroll
+
+    // Restore scroll by removing CSS class
+    document.body.classList.remove("overflow-hidden");
   }
 
   // Event listeners for opening modal
-  modalTriggers.forEach((trigger) => {
+  modalTriggers.forEach((trigger, index) => {
+    console.log(`Adding click listener to trigger ${index}:`, trigger);
     trigger.addEventListener("click", function (e) {
+      console.log("Modal trigger clicked!");
       e.preventDefault();
       openModal();
     });
