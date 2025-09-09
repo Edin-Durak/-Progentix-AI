@@ -90,6 +90,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
   .privacy-page .hero {
     padding: 6rem 0 3rem;
   }
