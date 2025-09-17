@@ -7,11 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   if (!modalOverlay || !modalClose) {
-    console.log("Modal elements not found:", { modalOverlay, modalClose });
     return;
   }
-
-  console.log("Modal triggers found:", modalTriggers.length);
 
   // Open modal
   function openModal() {
@@ -104,9 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listeners for opening modal
   modalTriggers.forEach((trigger, index) => {
-    console.log(`Adding click listener to trigger ${index}:`, trigger);
     trigger.addEventListener("click", function (e) {
-      console.log("Modal trigger clicked!");
       e.preventDefault();
       openModal();
     });
