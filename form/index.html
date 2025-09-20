@@ -65,7 +65,7 @@
 
     <!-- Preload Critical Resources -->
     <link rel="preload" href="../assets/css/base.css" as="style" />
-    <link rel="preload" href="../assets/css/contact-page.css" as="style" />
+    <link rel="preload" href="../assets/css/form-page.css" as="style" />
     <link
       rel="preload"
       href="../assets/fonts/Poppins/poppins-regular-webfont.woff2"
@@ -89,9 +89,9 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/contact-page.css" />
+    <link rel="stylesheet" href="../assets/css/form-page.css" />
   </head>
-  <body class="contact-page">
+  <body class="form-page">
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent" class="cookie-consent" aria-hidden="false">
       <div class="cookie-content">
@@ -122,83 +122,29 @@
           />
           <span>proptix.ai</span>
         </a>
-        <button class="hamburger-menu" aria-label="Open navigation menu">
-          <img src="../assets/img/hamburger-menu-icon.svg" alt="Menu" />
-        </button>
-        <nav class="nav">
-          <button class="close-menu" aria-label="Close navigation menu">
-            <img src="../assets/img/close-icon.svg" alt="Close" />
-          </button>
-          <ul class="nav-list">
-            <li><a href="/#about">About</a></li>
-            <li><a href="/#meet-sage">Meet Sage</a></li>
-            <li class="dropdown">
-              <button
-                class="dropdown-toggle"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-label="Services menu"
-              >
-                Services
-                <svg
-                  class="dropdown-arrow"
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M1 1L6 6L11 1"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <ul class="dropdown-menu" role="listbox" aria-label="Services">
-                <li role="option">
-                  <a href="/#flip180">Flip180</a>
-                </li>
-                <li role="option">
-                  <a href="/#operator-circle">Operator Circle</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="https://agent.proptix.ai/" class="btn btn-tertiary"
-                >Log In</a
-              >
-            </li>
-            <li>
-              <a href="#" class="btn btn-black" data-modal-trigger="try-free"
-                >Access Free Trial</a
-              >
-            </li>
-          </ul>
-        </nav>
       </div>
     </header>
-    <main class="main-contact-page">
-      <section class="contact-section" aria-labelledby="contact-heading">
-        <h2 id="contact-heading" hidden>Contact Form</h2>
+    <main class="main-form-page">
+      <section class="form-section" aria-labelledby="form-heading">
+        <h2 id="form-heading" hidden>Registration Form</h2>
         <div class="container">
-          <div class="contact-container">
-            <div id="contact-loading" class="contact-loading">
+          <div class="form-container">
+            <div id="form-loading" class="form-loading">
               <div class="loading-spinner"></div>
-              <p>Please accept cookies to load the contact form</p>
+              <p>Please accept cookies to load the form</p>
             </div>
             <iframe
-              src="https://api.leadconnectorhq.com/widget/form/Kfr2GGGO1qgskPpIePm9"
+              src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
               style="
                 width: 800px;
                 max-width: 100%;
                 height: 100%;
                 border: none;
                 border-radius: 3px;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
               "
-              id="inline-Kfr2GGGO1qgskPpIePm9"
+              id="inline-o1BMyrgvIR7zUg4daTCg"
               data-layout="{'id':'INLINE'}"
               data-trigger-type="alwaysShow"
               data-trigger-value=""
@@ -206,11 +152,12 @@
               data-activation-value=""
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
-              data-form-name="Contact Us"
-              data-height="925"
-              data-layout-iframe-id="inline-Kfr2GGGO1qgskPpIePm9"
-              data-form-id="Kfr2GGGO1qgskPpIePm9"
-              title="Contact Us"
+              data-form-name="Proptix Free Rego Form"
+              data-height="650"
+              data-layout-iframe-id="inline-o1BMyrgvIR7zUg4daTCg"
+              data-form-id="o1BMyrgvIR7zUg4daTCg"
+              title="Proptix Free Rego Form"
+              loading="lazy"
             >
             </iframe>
           </div>
@@ -253,7 +200,7 @@
                   <a href="#" aria-label="Frequently Asked Questions">FAQ's</a>
                 </li>
                 <li>
-                  <a href="#" aria-label="Get in touch with our team"
+                  <a href="../contact/" aria-label="Get in touch with our team"
                     >Get In Touch</a
                   >
                 </li>
@@ -285,70 +232,7 @@
       </div>
     </footer>
 
-    <!-- Modal Overlay -->
-    <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
-      <div
-        class="modal-container"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-      >
-        <button class="modal-close" aria-label="Close modal">
-          <img src="../assets/img/close-icon.svg" alt="Close" />
-        </button>
-        <div class="modal-content">
-          <h2 id="modal-title" hidden>Try Proptix For Free</h2>
-          <div class="modal-iframe-container">
-            <div id="iframe-placeholder" class="iframe-placeholder">
-              <!-- Cookie consent message (shown when cookies not accepted) -->
-              <div id="cookie-consent-message" class="cookie-consent-message">
-                <p style="font-size: 1.2rem; text-align: center">
-                  Please accept cookies to load the form...
-                </p>
-                <div class="cookie-buttons">
-                  <button class="btn btn-primary" onclick="loadIframeForm()">
-                    Accept
-                  </button>
-                  <button
-                    class="btn btn-secondary"
-                    onclick="hideIframePlaceholder()"
-                  >
-                    Decline
-                  </button>
-                </div>
-              </div>
-
-              <!-- Loading animation (shown when cookies are accepted) -->
-              <div
-                id="modal-loading"
-                class="modal-loading"
-                style="display: none"
-              >
-                <div class="loading-spinner"></div>
-                <p>Loading form...</p>
-              </div>
-            </div>
-            <iframe
-              data-src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
-              style="
-                width: 100%;
-                height: 100%;
-                border: none;
-                border-radius: 3px;
-                opacity: 0;
-                transition: opacity 0.5s ease-in-out;
-              "
-              id="inline-o1BMyrgvIR7zUg4daTCg"
-              title="Proptix Free Rego Form"
-              loading="lazy"
-            >
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script src="../assets/js/contact-page.js" defer></script>
+    <script src="../assets/js/form-page.js" defer></script>
     <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </body>
 </html>
