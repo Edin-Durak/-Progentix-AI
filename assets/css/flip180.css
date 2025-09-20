@@ -1,2 +1,214 @@
+/* Flip180 Page Styles */
+
 .flip180-page {
+  /* Inherits base styles */
+}
+
+/* Hero Section */
+.flip180-hero {
+  color: var(--color-white);
+  padding: var(--space-3xl) 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.flip180-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.flip180-hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  color: var(--color-white);
+}
+
+.flip180-hero-content p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  color: var(--color-accent-1);
+}
+
+.hero-inner-video {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-inner-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Who Is Flip180 For Section */
+
+.flip180-for-who-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  color: var(--color-primary);
+}
+
+/* Comparison Table Styles */
+.comparison-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.comparison-cell {
+  padding: var(--space-lg);
+}
+
+.comparison-row {
+  display: contents;
+}
+
+.comparison-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.comparison-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 1.5rem;
+}
+
+.ideal-candidate .comparison-icon {
+  background: var(--color-primary);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.not-ideal-candidate .comparison-icon {
+  background: var(--color-error);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.comparison-item p {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.flip180-for-who .btn-primary {
+  max-width: 300px;
+  margin: var(--space-xl) auto 0;
+  display: block;
+}
+
+.property-smarter-section {
+  text-align: center;
+  background-color: var(--color-primary);
+  p {
+    color: var(--color-heading-2);
+    font-size: 2.25rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .btn-secondary {
+    max-width: 300px;
+    margin: var(--space-2xl) auto 0;
+    display: block;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .flip180-hero-inner {
+    gap: var(--space-2xl);
+  }
+
+  .flip180-hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .flip180-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .flip180-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .flip180-for-who-title {
+    font-size: 2rem;
+  }
+
+  .comparison-item p {
+    font-size: 1rem;
+  }
+
+  .property-smarter-section p {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-table {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-row {
+    display: block;
+    margin-bottom: var(--space-lg);
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-primary);
+  }
+
+  .comparison-cell {
+    padding: var(--space-md);
+  }
+
+  .property-smarter-section p {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip180-hero {
+    padding: var(--space-2xl) 0;
+    min-height: 60vh;
+  }
+
+  .flip180-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .flip180-hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .flip180-for-who-title {
+    font-size: 1.75rem;
+  }
+
+  .comparison-item {
+    gap: var(--space-sm);
+  }
+
+  .comparison-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
