@@ -212,6 +212,10 @@ h3 {
   font-weight: 400;
 }
 
+.strong {
+  font-weight: 700;
+}
+
 /* layout helpers */
 .container {
   max-width: 1200px;
