@@ -15,6 +15,7 @@
   --color-heading-2: #eef8eb;
   --color-old-way: #dedede;
   --color-error: #eb4f45;
+  --color-blue-grey: #e7eaf4;
 
   /* semantic tokens */
   --bg: var(--color-bg);
