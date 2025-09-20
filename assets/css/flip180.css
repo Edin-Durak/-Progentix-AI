@@ -1,6 +1,12 @@
 /* Flip180 Page Styles */
 
 .flip180-page {
+  .btn-secondary,
+  .btn-primary {
+    max-width: 300px;
+    margin: var(--space-2xl) auto 0;
+    display: block;
+  }
   /* Inherits base styles */
 }
 
@@ -106,12 +112,6 @@
   font-size: 1.15rem;
 }
 
-.flip180-for-who .btn-primary {
-  max-width: 300px;
-  margin: var(--space-xl) auto 0;
-  display: block;
-}
-
 /* What You Get Section */
 
 .what-you-get-title {
@@ -142,6 +142,20 @@
 
 .feature-icon {
   margin-bottom: var(--space-lg);
+  position: relative;
+  display: inline-block;
+}
+
+.feature-icon::before {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-blue-grey);
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .feature-icon img {
@@ -149,19 +163,8 @@
   height: 60px;
   display: block;
   position: relative;
-}
-
-.feature-icon img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-blue-grey);
-  border-radius: 50%;
-  padding: 4px;
   z-index: 2;
+  margin-left: 1rem;
 }
 
 .feature-title {
@@ -172,7 +175,7 @@
 }
 
 .feature-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -184,12 +187,6 @@
     font-size: 2.25rem;
     line-height: 1;
     margin-bottom: 1rem;
-  }
-
-  .btn-secondary {
-    max-width: 300px;
-    margin: var(--space-2xl) auto 0;
-    display: block;
   }
 }
 
@@ -257,6 +254,13 @@
     padding: var(--space-md);
   }
 
+  .feature-icon::before {
+    top: -6px;
+    left: -6px;
+    width: 62px;
+    height: 62px;
+  }
+
   .feature-icon img {
     width: 50px;
     height: 50px;
@@ -264,6 +268,10 @@
 
   .feature-title {
     font-size: 1.25rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
   }
 
   .property-smarter-section p {
@@ -294,6 +302,13 @@
 
   .flip180-for-who-title {
     font-size: 1.75rem;
+  }
+
+  .feature-icon::before {
+    top: -5px;
+    left: -5px;
+    width: 55px;
+    height: 55px;
   }
 
   .feature-icon img {
