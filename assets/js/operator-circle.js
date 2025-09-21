@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(
       ".what-you-get-section h2, .what-you-get-section .feature-card, .what-you-get-section .btn"
     ),
-    // Pricing section
+    // Invite Only section
     ...document.querySelectorAll(".invite-only-section .invite-only-card"),
     // Proptix way section
     ...document.querySelectorAll(
-      ".proptix-way-section h2, .proptix-way-section .comparison-table"
+      ".proptix-way-section h2, .proptix-way-section .comparison-table, .btn-primary"
     ),
     // Questions section
     ...document.querySelectorAll(
