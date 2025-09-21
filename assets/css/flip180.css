@@ -639,8 +639,18 @@
     }
   }
 
-  .pricing-section .container {
-    padding-top: 7rem;
+  .pricing-section {
+    .container {
+      padding-top: 7rem;
+    }
+
+    .pricing-card {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    .most-popular-badge {
+      right: -10px;
+    }
   }
 
   .questions-section {
