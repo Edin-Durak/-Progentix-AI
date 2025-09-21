@@ -333,10 +333,8 @@
 
     .questions-cta {
       display: flex;
-      gap: 4rem;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     a {
@@ -459,10 +457,6 @@
     .questions-section {
       p {
         font-size: 1.4rem;
-      }
-
-      .questions-cta {
-        gap: 1rem;
       }
     }
   }
