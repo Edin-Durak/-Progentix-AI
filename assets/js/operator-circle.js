@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const animateElements = [
     // Hero section
     ...document.querySelectorAll(
-      ".flip180-hero h1, .flip180-hero p, .flip180-hero .btn, .hero-inner-video"
+      ".operator-circle-hero h1, .operator-circle-hero p, .operator-circle-hero .btn, .hero-inner-video"
     ),
-    // Who Is Flip180 For section
+    // Who Is Operator Circle For section
     ...document.querySelectorAll(
-      ".flip180-for-who h2, .flip180-for-who .comparison-table, .flip180-for-who .btn"
+      ".operator-circle-section h2, .operator-circle-section .comparison-table, .operator-circle-section .btn"
     ),
     // Property Smarter section
     ...document.querySelectorAll(
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ".what-you-get-section h2, .what-you-get-section .feature-card, .what-you-get-section .btn"
     ),
     // Pricing section
-    ...document.querySelectorAll(".pricing-section .pricing-card"),
+    ...document.querySelectorAll(".invite-only-section .invite-only-card"),
     // Proptix way section
     ...document.querySelectorAll(
       ".proptix-way-section h2, .proptix-way-section .comparison-table"
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (element) {
       // Don't hide hero elements initially - they'll be animated on load
       const isHeroElement =
-        element.closest(".flip180-hero") ||
+        element.closest(".operator-circle-hero") ||
         element.classList.contains("hero-inner-video");
 
       if (!isHeroElement) {
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Simple reveal animation for hero section on load
   const heroElements = [
     ...document.querySelectorAll(
-      ".flip180-hero h1, .flip180-hero p, .flip180-hero .btn"
+      ".operator-circle-hero h1, .operator-circle-hero p, .operator-circle-hero .btn"
     ),
-    ...document.querySelectorAll(".flip180-hero .hero-inner-video"),
+    ...document.querySelectorAll(".operator-circle-hero .hero-inner-video"),
   ];
 
   // Set initial state for hero elements and animate on load
