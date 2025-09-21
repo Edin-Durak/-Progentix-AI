@@ -12,26 +12,24 @@
 
 /* Hero Section */
 .flip180-hero {
-  .flip180-hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
+  .hero-inner {
+    display: flex;
+    gap: var(--space-2xl);
     align-items: center;
   }
 
-  .flip180-hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: var(--space-lg);
-    color: var(--color-white);
+  .hero-inner-content {
+    max-width: 500px;
   }
 
-  .flip180-hero-content p {
+  .hero-inner-content p {
     font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: var(--space-xl);
-    color: var(--color-accent-1);
+    line-height: 1.1;
+    margin: var(--space-lg) 0;
+  }
+
+  .btn-primary {
+    margin: 0;
   }
 
   .hero-inner-video {
@@ -413,12 +411,12 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
   .flip180-hero {
-    .flip180-hero-inner {
-      gap: var(--space-2xl);
+    .hero-inner-content {
+      max-width: 45%;
     }
 
-    .flip180-hero-content h1 {
-      font-size: 3rem;
+    h1 {
+      font-size: 3.5rem;
     }
   }
 
@@ -437,18 +435,22 @@
 
 @media (max-width: 992px) {
   .flip180-hero {
-    .flip180-hero-inner {
-      grid-template-columns: 1fr;
+    .hero-inner {
+      flex-direction: column;
+      gap: var(--space-2xl);
       text-align: center;
-      gap: var(--space-xl);
     }
 
-    .flip180-hero-content h1 {
-      font-size: 2.5rem;
+    .hero-inner-content {
+      max-width: 80%;
     }
 
-    .flip180-for-who-title {
-      font-size: 2rem;
+    h1 {
+      font-size: 3rem;
+    }
+
+    .btn-primary {
+      margin: 0 auto;
     }
   }
 
@@ -488,6 +490,16 @@
 }
 
 @media (max-width: 768px) {
+  .flip180-hero {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-inner-content p {
+      font-size: 1.1rem;
+    }
+  }
+
   .flip180-for-who {
     .comparison-table {
       grid-template-columns: 1fr;
@@ -566,6 +578,11 @@
 }
 
 @media (max-width: 600px) {
+  .flip180-hero {
+    .hero-inner-content {
+      max-width: 90%;
+    }
+  }
   .what-you-get-section {
     .features-grid {
       grid-template-columns: 1fr;
@@ -575,6 +592,12 @@
 }
 
 @media (max-width: 480px) {
+  .flip180-hero {
+    .hero-inner-content {
+      max-width: 100%;
+    }
+  }
+
   .flip180-hero {
     padding: var(--space-2xl) 0;
     min-height: 60vh;
