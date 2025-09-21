@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(".pricing-section .pricing-card"),
     // Proptix way section
     ...document.querySelectorAll(
-      ".proptix-way-section h2, .proptix-way-section .comparison-table, .btn-primary"
+      ".proptix-way-section h2, .proptix-way-section .comparison-table,.proptix-way-section .btn-primary"
     ),
     // Questions section
     ...document.querySelectorAll(
