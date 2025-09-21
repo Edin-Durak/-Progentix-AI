@@ -1,6 +1,6 @@
-/* Flip180 Page Styles */
+/* Operator Circle Page Styles */
 
-.flip180-page {
+.operator-circle-page {
   .btn-secondary,
   .btn-primary {
     max-width: 300px;
@@ -11,7 +11,7 @@
 }
 
 /* Hero Section */
-.flip180-hero {
+.operator-circle-hero {
   .hero-inner {
     display: flex;
     gap: var(--space-2xl);
@@ -46,9 +46,9 @@
   }
 }
 
-/* Who Is Flip180 For Section */
-.flip180-for-who {
-  .flip180-for-who-title {
+/* Who Is Operator Circle For Section */
+.operator-circle-section {
+  .operator-circle-title {
     text-align: center;
     margin-bottom: var(--space-3xl);
     color: var(--color-primary);
@@ -78,11 +78,10 @@
   }
 
   .comparison-icon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     flex-shrink: 0;
     margin-top: 2px;
-    font-size: 1.5rem;
   }
 
   .ideal-candidate .comparison-icon {
@@ -119,6 +118,11 @@
     margin: 0 auto;
   }
 
+  .features-grid.two-columns {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+
   .feature-card {
     text-align: left;
     padding: var(--space-lg);
@@ -129,6 +133,10 @@
   .feature-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
+  }
+
+  .feature-card.hide-desktop {
+    display: none;
   }
 
   .feature-icon {
@@ -432,7 +440,7 @@
 }
 
 @media (max-width: 992px) {
-  .flip180-hero {
+  .operator-circle-hero {
     .hero-inner {
       flex-direction: column;
       gap: var(--space-2xl);
@@ -456,6 +464,14 @@
     .features-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-lg);
+    }
+
+    .feature-card.hide-desktop {
+      display: block;
+    }
+
+    .feature-card.show-desktop {
+      display: none;
     }
   }
 
@@ -488,18 +504,17 @@
 }
 
 @media (max-width: 768px) {
-  .flip180-hero {
+  .operator-circle-hero {
     h1 {
       font-size: 2.5rem;
     }
-
     .hero-inner-content p {
       font-size: 1.1rem;
     }
   }
 
-  .flip180-for-who {
-    .flip180-for-who-title {
+  .operator-circle-section {
+    .operator-circle-title {
       margin-bottom: var(--space-md);
     }
 
@@ -509,9 +524,7 @@
 
     .comparison-row {
       display: block;
-      margin-bottom: var(--space-lg);
       overflow: hidden;
-      border-bottom: 1px solid var(--color-primary);
     }
 
     .comparison-cell {
@@ -580,13 +593,26 @@
 }
 
 @media (max-width: 600px) {
-  .flip180-hero {
+  .operator-circle-hero {
     .hero-inner-content {
       max-width: 90%;
     }
   }
+
+  .operator-circle-section {
+    .comparison-item {
+      gap: var(--space-sm);
+    }
+
+    .ideal-candidate .comparison-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   .what-you-get-section {
-    .features-grid {
+    .features-grid,
+    .features-grid.two-columns {
       grid-template-columns: 1fr;
       gap: var(--space-lg);
     }
@@ -594,29 +620,12 @@
 }
 
 @media (max-width: 480px) {
-  .flip180-hero {
-    .hero-inner-content {
-      max-width: 100%;
-    }
-  }
-
-  .flip180-hero {
-    .flip180-hero-content h1 {
+  .operator-circle-hero {
+    h1 {
       font-size: 2rem;
     }
-
-    .flip180-hero-content p {
-      font-size: 1.1rem;
-    }
-  }
-
-  .flip180-for-who {
-    .flip180-for-who-title {
-      font-size: 1.75rem;
-    }
-
-    .comparison-item {
-      gap: var(--space-sm);
+    .hero-inner-content {
+      max-width: 100%;
     }
   }
 
