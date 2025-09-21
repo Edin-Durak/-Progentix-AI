@@ -473,6 +473,13 @@
       }
     }
 
+    .services-section {
+      .service-card {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+    }
+
     .questions-section {
       p {
         font-size: 1.2rem;

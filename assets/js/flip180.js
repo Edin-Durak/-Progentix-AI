@@ -30,13 +30,20 @@ document.addEventListener("DOMContentLoaded", function () {
     ),
   ];
 
-  // Set initial state - all elements start hidden
+  // Set initial state - all elements start hidden (except hero elements)
   animateElements.forEach((element) => {
     if (element) {
-      element.style.opacity = "0";
-      element.style.transform = "translateY(30px)";
-      element.style.transition =
-        "opacity 0.8s ease-out, transform 0.8s ease-out";
+      // Don't hide hero elements initially - they'll be animated on load
+      const isHeroElement =
+        element.closest(".flip180-hero") ||
+        element.classList.contains("hero-inner-video");
+
+      if (!isHeroElement) {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(30px)";
+        element.style.transition =
+          "opacity 0.8s ease-out, transform 0.8s ease-out";
+      }
     }
   });
 
@@ -71,9 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(".flip180-hero .hero-inner-video"),
   ];
 
-  // Animate hero elements on load
+  // Set initial state for hero elements and animate on load
   heroElements.forEach((element, index) => {
     if (element) {
+      // Set initial hidden state
+      element.style.opacity = "0";
+      element.style.transform = "translateY(30px)";
+      element.style.transition =
+        "opacity 0.8s ease-out, transform 0.8s ease-out";
+
+      // Animate on load
       setTimeout(() => {
         element.style.opacity = "1";
         element.style.transform = "translateY(0)";
@@ -115,8 +129,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Button hover animations
 document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll(".btn-secondary");
-  buttons.forEach((button) => {
+  // Secondary buttons
+  const secondaryButtons = document.querySelectorAll(".btn-secondary");
+  secondaryButtons.forEach((button) => {
+    button.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-2px)";
+      this.style.opacity = "0.9";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    button.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+
+  // Primary buttons
+  const primaryButtons = document.querySelectorAll(".btn-primary");
+  primaryButtons.forEach((button) => {
+    button.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-2px)";
+      this.style.opacity = "0.9";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+
+    button.addEventListener("mouseleave", function () {
+      this.style.transform = "translateY(0)";
+      this.style.transition = "transform 0.3s ease-out";
+    });
+  });
+
+  // Service buttons (used in pricing cards)
+  const serviceButtons = document.querySelectorAll(".btn-service");
+  serviceButtons.forEach((button) => {
     button.addEventListener("mouseenter", function () {
       this.style.transform = "translateY(-2px)";
       this.style.opacity = "0.9";
