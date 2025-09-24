@@ -339,6 +339,7 @@ function hideIframePlaceholder() {
   if (modalOverlay) {
     modalOverlay.classList.remove("active");
     modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("overflow-hidden"); // Remove CSS class
     document.body.style.overflow = ""; // Restore scroll
   }
 }
