@@ -232,10 +232,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if user has already made a choice
   const cookieChoice = localStorage.getItem("cookie-consent");
 
-  if (!cookieChoice) {
+  if (!cookieChoice || cookieChoice === "declined") {
     // Show cookie banner after a short delay
     setTimeout(() => {
       cookieConsent.classList.add("show");
+      cookieConsent.setAttribute("aria-hidden", "false");
     }, 1000);
   }
 
@@ -253,3 +254,91 @@ document.addEventListener("DOMContentLoaded", function () {
     cookieConsent.setAttribute("aria-hidden", "true");
   });
 });
+
+// Iframe form cookie consent handling
+function loadIframeForm() {
+  console.log("loadIframeForm called");
+
+  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const cookieConsentMessage = document.getElementById(
+    "cookie-consent-message"
+  );
+  const modalLoading = document.getElementById("modal-loading");
+  const mainCookieBanner = document.getElementById("cookie-consent");
+
+  if (!iframe || !iframePlaceholder) {
+    console.log("Missing iframe or iframePlaceholder");
+    return;
+  }
+
+  console.log("Setting cookie consent to accepted");
+  // Set cookie consent for LeadConnector and main site
+  localStorage.setItem("leadconnector-cookies-accepted", "true");
+  localStorage.setItem("cookie-consent", "accepted");
+
+  // Check if main cookie banner has 'show' class and remove it
+  if (mainCookieBanner && mainCookieBanner.classList.contains("show")) {
+    console.log("Removing show class from main cookie banner");
+    mainCookieBanner.classList.remove("show");
+    mainCookieBanner.setAttribute("aria-hidden", "true");
+  }
+
+  // Hide cookie consent message and show loading
+  if (cookieConsentMessage) {
+    cookieConsentMessage.style.display = "none";
+  }
+  if (modalLoading) {
+    modalLoading.style.display = "flex";
+  }
+
+  // Load iframe
+  const dataSrc = iframe.getAttribute("data-src");
+  if (dataSrc) {
+    iframe.setAttribute("src", dataSrc);
+  }
+
+  // Load third-party script
+  const script = document.createElement("script");
+  script.src = "https://link.msgsndr.com/js/form_embed.js";
+  script.async = true;
+  document.head.appendChild(script);
+
+  // Wait 2 seconds, then hide loading and show iframe
+  setTimeout(() => {
+    if (modalLoading) {
+      modalLoading.style.display = "none";
+    }
+    if (iframePlaceholder) {
+      iframePlaceholder.classList.add("hidden");
+    }
+    // Fade in the iframe
+    iframe.style.opacity = "1";
+  }, 2000);
+}
+
+function hideIframePlaceholder() {
+  console.log("hideIframePlaceholder called");
+
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const modalOverlay = document.getElementById("modal-overlay");
+  const mainCookieBanner = document.getElementById("cookie-consent");
+
+  if (iframePlaceholder) {
+    iframePlaceholder.classList.add("hidden");
+  }
+
+  // Check if main cookie banner doesn't have 'show' class and add it
+  if (mainCookieBanner && !mainCookieBanner.classList.contains("show")) {
+    console.log("Adding show class to main cookie banner");
+    mainCookieBanner.classList.add("show");
+    mainCookieBanner.setAttribute("aria-hidden", "false");
+  }
+
+  // Close the modal when user declines
+  if (modalOverlay) {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = ""; // Restore scroll
+  }
+}
