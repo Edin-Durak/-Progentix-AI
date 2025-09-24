@@ -399,10 +399,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
   }
 
   a {
     min-width: 200px;
+    margin-top: 0.5rem !important;
   }
 }
 
@@ -575,6 +578,9 @@
   .questions-section {
     p {
       font-size: 1.4rem;
+    }
+    .questions-cta {
+      gap: 1rem;
     }
   }
 }
