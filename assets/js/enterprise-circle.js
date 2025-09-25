@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const animateElements = [
     // Hero section
     ...document.querySelectorAll(
-      ".operator-circle-hero h1, .operator-circle-hero p, .operator-circle-hero .btn, .hero-inner-video"
+      ".enterprise-circle-hero h1, .enterprise-circle-hero p, .enterprise-circle-hero .btn, .hero-inner-video"
     ),
-    // Who Is Operator Circle For section
+    // Who Is Enterprise Circle For section
     ...document.querySelectorAll(
-      ".operator-circle-section h2, .operator-circle-section .comparison-table, .operator-circle-section .btn"
+      ".enterprise-circle-section h2, .enterprise-circle-section .comparison-table, .enterprise-circle-section .btn"
     ),
     // Property Smarter section
     ...document.querySelectorAll(
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (element) {
       // Don't hide hero elements initially - they'll be animated on load
       const isHeroElement =
-        element.closest(".operator-circle-hero") ||
+        element.closest(".enterprise-circle-hero") ||
         element.classList.contains("hero-inner-video");
 
       if (!isHeroElement) {
@@ -73,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Simple reveal animation for hero section on load
   const heroElements = [
     ...document.querySelectorAll(
-      ".operator-circle-hero h1, .operator-circle-hero p, .operator-circle-hero .btn"
+      ".enterprise-circle-hero h1, .enterprise-circle-hero p, .enterprise-circle-hero .btn"
     ),
-    ...document.querySelectorAll(".operator-circle-hero .hero-inner-video"),
+    ...document.querySelectorAll(".enterprise-circle-hero .hero-inner-video"),
   ];
 
   // Set initial state for hero elements and animate on load
