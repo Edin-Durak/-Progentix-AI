@@ -1,6 +1,6 @@
-/* Operator Circle Page Styles */
+/* Enterprise Circle Page Styles */
 
-.operator-circle-page {
+.enterprise-circle-page {
   .btn-secondary,
   .btn-primary {
     max-width: 300px;
@@ -11,7 +11,7 @@
 }
 
 /* Hero Section */
-.operator-circle-hero {
+.enterprise-circle-hero {
   .hero-inner {
     display: flex;
     gap: var(--space-2xl);
@@ -46,9 +46,9 @@
   }
 }
 
-/* Who Is Operator Circle For Section */
-.operator-circle-section {
-  .operator-circle-title {
+/* Who Is Enterprise Circle For Section */
+.enterprise-circle-section {
+  .enterprise-circle-title {
     text-align: center;
     margin-bottom: var(--space-3xl);
     color: var(--color-primary);
@@ -384,7 +384,7 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .operator-circle-hero {
+  .enterprise-circle-hero {
     .hero-inner-content {
       max-width: 45%;
     }
@@ -402,7 +402,7 @@
 }
 
 @media (max-width: 992px) {
-  .operator-circle-hero {
+  .enterprise-circle-hero {
     .hero-inner {
       flex-direction: column;
       gap: var(--space-2xl);
@@ -453,7 +453,7 @@
 }
 
 @media (max-width: 768px) {
-  .operator-circle-hero {
+  .enterprise-circle-hero {
     h1 {
       font-size: 2.5rem;
     }
@@ -462,8 +462,8 @@
     }
   }
 
-  .operator-circle-section {
-    .operator-circle-title {
+  .enterprise-circle-section {
+    .enterprise-circle-title {
       margin-bottom: var(--space-md);
     }
 
@@ -538,13 +538,13 @@
 }
 
 @media (max-width: 600px) {
-  .operator-circle-hero {
+  .enterprise-circle-hero {
     .hero-inner-content {
       max-width: 90%;
     }
   }
 
-  .operator-circle-section {
+  .enterprise-circle-section {
     .comparison-item {
       gap: var(--space-sm);
     }
@@ -565,7 +565,7 @@
 }
 
 @media (max-width: 480px) {
-  .operator-circle-hero {
+  .enterprise-circle-hero {
     h1 {
       font-size: 2rem;
     }

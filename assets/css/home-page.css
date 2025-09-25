@@ -293,7 +293,7 @@
       color: var(--color-surface);
     }
     #service-technology-price,
-    #service-operator-price {
+    #service-enterprise-price {
       color: var(--color-accent-1);
       font-size: 0.9rem;
       line-height: 1.3;
