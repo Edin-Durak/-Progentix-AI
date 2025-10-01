@@ -251,26 +251,34 @@ document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
   dropdownToggles.forEach((toggle) => {
-    toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
+    const dropdown = toggle.closest(".dropdown");
 
-      const dropdown = this.closest(".dropdown");
-      const isActive = dropdown.classList.contains("active");
-
+    // Handle hover events
+    dropdown.addEventListener("mouseenter", function () {
       // Close all other dropdowns
       document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
         if (otherDropdown !== dropdown) {
           otherDropdown.classList.remove("active");
-          otherDropdown
-            .querySelector(".dropdown-toggle")
-            .setAttribute("aria-expanded", "false");
         }
       });
 
-      // Toggle current dropdown
-      dropdown.classList.toggle("active");
-      this.setAttribute("aria-expanded", !isActive);
+      // Show current dropdown
+      dropdown.classList.add("active");
+    });
+
+    dropdown.addEventListener("mouseleave", function () {
+      // Hide dropdown when mouse leaves
+      dropdown.classList.remove("active");
+    });
+
+    // Handle click on Services link (for navigation)
+    toggle.addEventListener("click", function (e) {
+      // Only prevent default if it's not a link to #services
+      if (toggle.getAttribute("href") === "#services") {
+        // Allow normal navigation to #services section
+        return;
+      }
+      e.preventDefault();
     });
   });
 
@@ -279,9 +287,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!e.target.closest(".dropdown")) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
       });
     }
   });
@@ -291,9 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === "Escape") {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
       });
     }
   });

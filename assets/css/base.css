@@ -603,6 +603,10 @@ h3 {
       display: inline-block;
     }
 
+    .nav-list a.dropdown-toggle {
+      display: inline-flex;
+    }
+
     .nav-list [class*="btn"] {
       width: 100%;
       max-width: 300px;
