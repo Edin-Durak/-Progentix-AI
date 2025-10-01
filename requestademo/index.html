@@ -121,15 +121,13 @@
             alt="Progentix‑AI"
             width="40"
             height="40"
-            loading="eager"
-            decoding="async"
           />
           <span>proptix.ai</span>
         </a>
         <button class="hamburger-menu" aria-label="Open navigation menu">
           <img src="../assets/img/hamburger-menu-icon.svg" alt="Menu" />
         </button>
-        <nav class="nav">
+        <nav class="nav" aria-label="Main navigation">
           <button class="close-menu" aria-label="Close navigation menu">
             <img src="../assets/img/close-icon.svg" alt="Close" />
           </button>
@@ -137,12 +135,7 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#meet-sage">Meet Sage</a></li>
             <li class="dropdown">
-              <button
-                class="dropdown-toggle"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                aria-label="Services menu"
-              >
+              <a href="/#services" class="dropdown-toggle toggle-link">
                 Services
                 <svg
                   class="dropdown-arrow"
@@ -160,17 +153,18 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-              </button>
+              </a>
               <ul class="dropdown-menu" role="listbox" aria-label="Services">
                 <li role="option">
-                  <a href="/#services">Flip180</a>
+                  <a href="../flip180/" target="_blank">Flip180</a>
                 </li>
                 <li role="option">
-                  <a href="/#services">Enterprise Circle</a>
+                  <a href="../enterprisecircle/" target="_blank"
+                    >Enterprise Circle</a
+                  >
                 </li>
               </ul>
             </li>
-
             <li>
               <a href="https://agent.proptix.ai/" class="btn btn-tertiary"
                 >Log In</a

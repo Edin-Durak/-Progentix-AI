@@ -275,54 +275,67 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Dropdown functionality
+// Dropdown functionality - hover for desktop, always visible on mobile
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
   dropdownToggles.forEach((toggle) => {
+    const dropdown = toggle.closest(".dropdown");
+
+    // Function to check if device is mobile
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
+    // Handle hover events (desktop only)
+    dropdown.addEventListener("mouseenter", function () {
+      if (!isMobile()) {
+        // Close all other dropdowns
+        document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove("active");
+          }
+        });
+
+        // Show current dropdown
+        dropdown.classList.add("active");
+      }
+    });
+
+    dropdown.addEventListener("mouseleave", function () {
+      if (!isMobile()) {
+        // Hide dropdown when mouse leaves
+        dropdown.classList.remove("active");
+      }
+    });
+
+    // Handle click events (desktop only - mobile shows all items directly)
     toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const dropdown = this.closest(".dropdown");
-      const isActive = dropdown.classList.contains("active");
-
-      // Close all other dropdowns
-      document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
-        if (otherDropdown !== dropdown) {
-          otherDropdown.classList.remove("active");
-          otherDropdown
-            .querySelector(".dropdown-toggle")
-            .setAttribute("aria-expanded", "false");
+      if (!isMobile()) {
+        // Desktop: allow normal navigation to #services section
+        if (toggle.getAttribute("href") === "#services") {
+          return; // Allow normal navigation
         }
-      });
-
-      // Toggle current dropdown
-      dropdown.classList.toggle("active");
-      this.setAttribute("aria-expanded", !isActive);
+        e.preventDefault();
+      }
+      // Mobile: do nothing - all items are always visible
     });
   });
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns when clicking outside (desktop only)
   document.addEventListener("click", function (e) {
-    if (!e.target.closest(".dropdown")) {
+    if (!isMobile() && !e.target.closest(".dropdown")) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
       });
     }
   });
 
-  // Close dropdowns when pressing Escape
+  // Close dropdowns when pressing Escape (desktop only)
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && !isMobile()) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
-        dropdown
-          .querySelector(".dropdown-toggle")
-          .setAttribute("aria-expanded", "false");
       });
     }
   });

@@ -246,54 +246,65 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Dropdown functionality
+// Dropdown functionality - hover for desktop, always visible on mobile
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
   dropdownToggles.forEach((toggle) => {
     const dropdown = toggle.closest(".dropdown");
 
-    // Handle hover events
-    dropdown.addEventListener("mouseenter", function () {
-      // Close all other dropdowns
-      document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
-        if (otherDropdown !== dropdown) {
-          otherDropdown.classList.remove("active");
-        }
-      });
+    // Function to check if device is mobile
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
 
-      // Show current dropdown
-      dropdown.classList.add("active");
+    // Handle hover events (desktop only)
+    dropdown.addEventListener("mouseenter", function () {
+      if (!isMobile()) {
+        // Close all other dropdowns
+        document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove("active");
+          }
+        });
+
+        // Show current dropdown
+        dropdown.classList.add("active");
+      }
     });
 
     dropdown.addEventListener("mouseleave", function () {
-      // Hide dropdown when mouse leaves
-      dropdown.classList.remove("active");
+      if (!isMobile()) {
+        // Hide dropdown when mouse leaves
+        dropdown.classList.remove("active");
+      }
     });
 
-    // Handle click on Services link (for navigation)
+    // Handle click events (desktop only - mobile shows all items directly)
     toggle.addEventListener("click", function (e) {
-      // Only prevent default if it's not a link to #services
-      if (toggle.getAttribute("href") === "#services") {
-        // Allow normal navigation to #services section
-        return;
+      if (!isMobile()) {
+        // Desktop: allow normal navigation to #services section
+        if (toggle.getAttribute("href") === "#services") {
+          return; // Allow normal navigation
+        }
+        e.preventDefault();
       }
-      e.preventDefault();
+      // Mobile: do nothing - all items are always visible
     });
   });
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns when clicking outside (desktop only)
   document.addEventListener("click", function (e) {
-    if (!e.target.closest(".dropdown")) {
+    if (!isMobile() && !e.target.closest(".dropdown")) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
       });
     }
   });
 
-  // Close dropdowns when pressing Escape
+  // Close dropdowns when pressing Escape (desktop only)
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && !isMobile()) {
       document.querySelectorAll(".dropdown").forEach((dropdown) => {
         dropdown.classList.remove("active");
       });
