@@ -146,13 +146,13 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 
+  // Function to check if device is mobile
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
   dropdownToggles.forEach((toggle) => {
     const dropdown = toggle.closest(".dropdown");
-
-    // Function to check if device is mobile
-    function isMobile() {
-      return window.innerWidth <= 768;
-    }
 
     // Handle hover events (desktop only)
     dropdown.addEventListener("mouseenter", function () {
@@ -176,16 +176,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Handle click events (desktop only - mobile shows all items directly)
+    // Handle click events - always allow normal navigation
     toggle.addEventListener("click", function (e) {
-      if (!isMobile()) {
-        // Desktop: allow normal navigation to #services section
-        if (toggle.getAttribute("href") === "#services") {
-          return; // Allow normal navigation
-        }
-        e.preventDefault();
+      // Always allow normal navigation to services section
+      if (
+        toggle.getAttribute("href") === "/#services" ||
+        toggle.getAttribute("href") === "#services"
+      ) {
+        return; // Allow normal navigation
       }
-      // Mobile: do nothing - all items are always visible
+      e.preventDefault();
     });
   });
 
