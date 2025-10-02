@@ -14,7 +14,7 @@
   padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  line-height: 1.7;
+  line-height: 1.3;
 }
 
 /* Use existing heading styles from base.css */
@@ -23,7 +23,6 @@
   font-size: 1.75rem;
   font-weight: 600;
   margin: 2.5rem 0 1rem 0;
-  padding-top: 1rem;
   border-top: 2px solid var(--color-primary);
 }
 
@@ -51,10 +50,6 @@
 .privacy-text ol {
   margin: 1rem 0 1.5rem 2rem;
   list-style: disc;
-}
-
-.privacy-text li {
-  margin-bottom: 0.5rem;
 }
 
 .terms-text a {
