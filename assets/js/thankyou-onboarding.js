@@ -8,9 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Scroll-triggered elements (animate when scrolled into view)
   const scrollElements = [
     ...document.querySelectorAll(".video-section .video-background-container"),
-    ...document.querySelectorAll(
-      ".questions-section h2, .questions-section p, .questions-cta"
-    ),
   ];
 
   // Intersection Observer for scroll-triggered animations
