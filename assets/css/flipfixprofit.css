@@ -1,4 +1,5 @@
 .form-page {
+  overflow-x: hidden;
   .header {
     background-color: transparent;
     position: static;
@@ -64,7 +65,8 @@
     overflow: hidden;
     padding: 2rem;
     min-height: 567px;
-    width: 400px;
+    width: 600px;
+    max-width: 90%;
     position: relative;
   }
 }
@@ -131,6 +133,7 @@
     .form-container {
       margin: 0 1rem;
       padding: 1rem;
+      max-width: 90% !important;
       min-height: 700px; /* Prevent layout shift */
     }
   }
