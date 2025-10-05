@@ -1,99 +1,228 @@
-// Smooth fade-in animations for revealing elements
+// Delayed content loading functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Elements to animate for Flip180 page
-  const animateElements = [
-    // Hero section
-    ...document.querySelectorAll(
-      ".flip180-hero h1, .flip180-hero p, .flip180-hero .btn, .hero-inner-video"
-    ),
-    // Who Is Flip180 For section
-    ...document.querySelectorAll(
-      ".flip180-for-who h2, .flip180-for-who .comparison-table, .flip180-for-who .btn"
-    ),
+  // Configuration
+  const DELAY_TIME = 2.5 * 60 * 1000; // 2.5 minutes in milliseconds
+  let contentLoaded = false;
+  let videoPlayTime = 0;
+  let videoTimer = null;
+
+  // Elements to hide initially (everything except hero)
+  const delayedElements = [
     // Property Smarter section
-    ...document.querySelectorAll(
-      ".property-smarter-section p, .property-smarter-section .btn"
-    ),
+    ...document.querySelectorAll(".property-smarter-section"),
+    // Who Is Flip180 For section
+    ...document.querySelectorAll(".flip180-for-who"),
     // What You Get section
-    ...document.querySelectorAll(
-      ".what-you-get-section h2, .what-you-get-section .feature-card, .what-you-get-section .btn"
-    ),
+    ...document.querySelectorAll(".what-you-get-section"),
     // Pricing section
-    ...document.querySelectorAll(".pricing-section .pricing-card"),
-    // Proptix way section
-    ...document.querySelectorAll(
-      ".proptix-way-section h2, .proptix-way-section .comparison-table,.proptix-way-section .btn-primary"
-    ),
+    ...document.querySelectorAll(".pricing-section"),
     // Questions section
+    ...document.querySelectorAll(".questions-section"),
+    // Footer
+    ...document.querySelectorAll(".footer"),
+  ];
+
+  // Hero elements (always visible)
+  const heroElements = [
     ...document.querySelectorAll(
-      ".questions-section h2, .questions-section p, .questions-section .btn"
+      ".flip180-hero h1, .flip180-hero p, .flip180-hero .btn, .flip180-hero .hero-inner-video"
     ),
   ];
 
-  // Set initial state - all elements start hidden (except hero elements)
-  animateElements.forEach((element) => {
-    if (element) {
-      // Don't hide hero elements initially - they'll be animated on load
-      const isHeroElement =
-        element.closest(".flip180-hero") ||
-        element.classList.contains("hero-inner-video");
+  // Initialize page state
+  function initializePage() {
+    // Hide all delayed content initially
+    delayedElements.forEach((element) => {
+      if (element) {
+        element.style.display = "none";
+        element.style.opacity = "0";
+      }
+    });
 
-      if (!isHeroElement) {
+    // Show hero elements immediately
+    heroElements.forEach((element, index) => {
+      if (element) {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(30px)";
+        element.style.transition =
+          "opacity 0.8s ease-out, transform 0.8s ease-out";
+
+        // Animate hero on load
+        setTimeout(() => {
+          element.style.opacity = "1";
+          element.style.transform = "translateY(0)";
+        }, 300 + index * 200);
+      }
+    });
+  }
+
+  // Load delayed content with animation
+  function loadDelayedContent() {
+    if (contentLoaded) return;
+    contentLoaded = true;
+
+    console.log("Loading delayed content after 2.5 minutes");
+
+    // Show all delayed sections
+    delayedElements.forEach((element, index) => {
+      if (element) {
+        element.style.display = "block";
+        element.style.opacity = "0";
+        element.style.transform = "translateY(30px)";
+        element.style.transition =
+          "opacity 0.8s ease-out, transform 0.8s ease-out";
+
+        // Staggered animation for each section
+        setTimeout(() => {
+          element.style.opacity = "1";
+          element.style.transform = "translateY(0)";
+        }, index * 300);
+      }
+    });
+
+    // Setup scroll animations for individual elements within each section
+    setupScrollAnimations();
+
+    // Add smooth scroll animation for internal links
+    setupSmoothScroll();
+  }
+
+  // Setup scroll-triggered animations for individual elements
+  function setupScrollAnimations() {
+    // Elements to animate within each section
+    const animateElements = [
+      // Property Smarter section
+      ...document.querySelectorAll(
+        ".property-smarter-section p, .property-smarter-section .btn"
+      ),
+      // Who Is Flip180 For section
+      ...document.querySelectorAll(
+        ".flip180-for-who h2, .flip180-for-who .comparison-table, .flip180-for-who .btn"
+      ),
+      // What You Get section
+      ...document.querySelectorAll(
+        ".what-you-get-section h2, .what-you-get-section .feature-card, .what-you-get-section .btn"
+      ),
+      // Pricing section
+      ...document.querySelectorAll(".pricing-section .pricing-card"),
+      // Questions section
+      ...document.querySelectorAll(
+        ".questions-section h2, .questions-section p, .questions-section .btn"
+      ),
+    ];
+
+    // Set initial state for scroll animation elements
+    animateElements.forEach((element) => {
+      if (element) {
         element.style.opacity = "0";
         element.style.transform = "translateY(30px)";
         element.style.transition =
           "opacity 0.8s ease-out, transform 0.8s ease-out";
       }
-    }
-  });
+    });
 
-  // Intersection Observer for scroll-triggered animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target); // Stop observing once animated
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target); // Stop observing once animated
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements
+    animateElements.forEach((element) => {
+      if (element) {
+        observer.observe(element);
       }
     });
-  }, observerOptions);
+  }
 
-  // Observe all elements
-  animateElements.forEach((element) => {
-    if (element) {
-      observer.observe(element);
+  // Video tracking functionality (prepared for future use)
+  function startVideoTracking() {
+    // This will be used when video is implemented
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach((video) => {
+      video.addEventListener("play", () => {
+        console.log("Video started playing");
+        startVideoTimer();
+      });
+
+      video.addEventListener("pause", () => {
+        console.log("Video paused");
+        stopVideoTimer();
+      });
+
+      video.addEventListener("ended", () => {
+        console.log("Video ended");
+        stopVideoTimer();
+      });
+    });
+  }
+
+  function startVideoTimer() {
+    if (videoTimer) return; // Already running
+
+    videoTimer = setInterval(() => {
+      videoPlayTime += 1000; // Increment by 1 second
+
+      // Check if 2 minutes of video playback reached
+      if (videoPlayTime >= 2 * 60 * 1000) {
+        loadDelayedContent();
+        stopVideoTimer();
+      }
+    }, 1000);
+  }
+
+  function stopVideoTimer() {
+    if (videoTimer) {
+      clearInterval(videoTimer);
+      videoTimer = null;
     }
-  });
+  }
 
-  // Simple reveal animation for hero section on load
-  const heroElements = [
-    ...document.querySelectorAll(
-      ".flip180-hero h1, .flip180-hero p, .flip180-hero .btn"
-    ),
-    ...document.querySelectorAll(".flip180-hero .hero-inner-video"),
-  ];
+  // Setup smooth scroll for internal links
+  function setupSmoothScroll() {
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
 
-  // Set initial state for hero elements and animate on load
-  heroElements.forEach((element, index) => {
-    if (element) {
-      // Set initial hidden state
-      element.style.opacity = "0";
-      element.style.transform = "translateY(30px)";
-      element.style.transition =
-        "opacity 0.8s ease-out, transform 0.8s ease-out";
+    internalLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
 
-      // Animate on load
-      setTimeout(() => {
-        element.style.opacity = "1";
-        element.style.transform = "translateY(0)";
-      }, 300 + index * 200); // Staggered animation
-    }
-  });
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+  }
+
+  // Initialize everything
+  initializePage();
+  startVideoTracking(); // Prepare for video functionality
+
+  // Start the 2.5 minute timer
+  setTimeout(() => {
+    loadDelayedContent();
+  }, DELAY_TIME);
+
+  // Optional: Add a manual trigger for testing (remove in production)
+  window.loadContentNow = function () {
+    console.log("Manually triggering content load");
+    loadDelayedContent();
+  };
 });
 
 // Hover animations for cards
