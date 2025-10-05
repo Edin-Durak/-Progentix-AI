@@ -1,16 +1,7 @@
 .thankyou-onboarding-page {
   .header {
-    width: fit-content;
-
-    .header-inner {
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .btn-tertiary {
-      font-size: 1rem;
-      margin-top: 2px;
-    }
+    background-color: transparent;
+    position: static;
   }
 }
 
@@ -35,7 +26,7 @@
       max-width: 500px;
       margin: 0 auto;
       font-size: 1.25rem;
-      line-height: 1;
+      line-height: 1.4;
     }
 
     .hero-subtitle {
@@ -78,7 +69,7 @@
 
         p {
           max-width: none;
-          margin: 0 0 1.5rem 0;
+          margin: 0 0 1rem 0;
         }
 
         h3 {
@@ -97,7 +88,7 @@
             position: relative;
             padding-left: 1.5rem;
             font-size: 1.25rem;
-            line-height: 1;
+            line-height: 1.4;
 
             &::before {
               content: "•";
@@ -128,22 +119,6 @@
           border-radius: 8px;
         }
       }
-    }
-  }
-
-  .video-section {
-    .video-background-container {
-      width: 90%;
-      max-width: 1000px;
-      margin: 0 auto 0.5rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-
-    .video-background-video {
-      border-radius: 20px;
     }
   }
 }
@@ -221,6 +196,7 @@
 
           ul {
             margin-bottom: 1.5rem;
+            text-align: left;
 
             li {
               font-size: 1rem;
