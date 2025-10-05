@@ -67,13 +67,6 @@
     width: 400px;
     position: relative;
   }
-
-  iframe {
-    width: 100%;
-    height: 650px;
-    border: none;
-    border-radius: 3px;
-  }
 }
 
 /* Loading state */
@@ -140,22 +133,26 @@
       padding: 1rem;
       min-height: 700px; /* Prevent layout shift */
     }
-
-    iframe {
-      height: 600px;
-    }
   }
 }
 @media (max-width: 480px) {
   .main-form-page {
+    .form-details {
+      padding: 1rem 1rem;
+    }
+    .form-details p {
+      width: 100%;
+    }
+    .form-details ul {
+      width: 100%;
+    }
+    .form-details .cta-text {
+      width: 100%;
+    }
     .form-container {
       margin: 0 0.5rem;
       padding: 0.5rem;
       min-height: 850px;
-    }
-
-    iframe {
-      height: 550px;
     }
   }
 }
