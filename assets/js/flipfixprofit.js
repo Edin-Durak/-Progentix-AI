@@ -35,20 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Function to load the form iframe
+// Function to load the WebinarJam form
 function loadFormIframe() {
-  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const webinarWrapper = document.querySelector(".wj-embed-wrapper");
   const loadingElement = document.getElementById("form-loading");
 
-  if (!iframe) return;
+  if (!webinarWrapper) return;
 
   // Check if cookies are accepted
   const cookieChoice = localStorage.getItem("cookie-consent");
 
   if (cookieChoice === "accepted") {
-    // Set cookie consent for LeadConnector
-    localStorage.setItem("leadconnector-cookies-accepted", "true");
-
     // Change text to loading message
     if (loadingElement) {
       const loadingText = loadingElement.querySelector("p");
@@ -57,24 +54,12 @@ function loadFormIframe() {
       }
     }
 
-    // Load third-party script if not already loaded
-    if (
-      !document.querySelector(
-        'script[src="https://link.msgsndr.com/js/form_embed.js"]'
-      )
-    ) {
-      const script = document.createElement("script");
-      script.src = "https://link.msgsndr.com/js/form_embed.js";
-      script.async = true;
-      document.head.appendChild(script);
-    }
-
-    // Wait 2 seconds, then fade in the iframe and hide loading
+    // Wait 2 seconds, then hide loading and show webinar form
     setTimeout(() => {
       if (loadingElement) {
         loadingElement.style.display = "none";
       }
-      iframe.style.opacity = "1";
+      webinarWrapper.style.opacity = "1";
     }, 2000);
   }
 }
@@ -84,9 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookieChoice = localStorage.getItem("cookie-consent");
 
   if (cookieChoice === "accepted") {
-    loadFormIframe();
-  } else if (cookieChoice === "declined") {
-    // Show cookie consent message in loading placeholder for declined users
     loadFormIframe();
   }
 });

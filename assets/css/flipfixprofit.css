@@ -35,12 +35,25 @@
   p {
     margin-bottom: var(--space-md);
     font-size: 1.25rem;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   ul {
     list-style: disc;
     text-align: left;
     font-size: 1.25rem;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 2rem;
+  }
+
+  .cta-text {
+    font-size: 1.5625rem;
+    font-weight: 700;
+    margin-top: var(--space-sm);
   }
   .form-container {
     max-width: 750px;
@@ -50,7 +63,8 @@
     box-shadow: 0 10px 30px rgba(89, 46, 131, 0.1);
     overflow: hidden;
     padding: 2rem;
-    min-height: 781px;
+    min-height: 567px;
+    width: 400px;
     position: relative;
   }
 
@@ -109,6 +123,11 @@
 @media (max-width: 1200px) {
 }
 @media (max-width: 992px) {
+  .main-form-page {
+    .form-details {
+      padding: 1rem 2rem;
+    }
+  }
 }
 @media (max-width: 768px) {
   .main-form-page {

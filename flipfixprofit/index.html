@@ -55,14 +55,20 @@
     <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com https://connect.facebook.net; connect-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com https://connect.facebook.net;"
+      content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com https://event.webinarjam.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com https://connect.facebook.net https://event.webinarjam.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com https://connect.facebook.net https://event.webinarjam.com;"
+    />
+
+    <!-- Permissions Policy -->
+    <meta
+      http-equiv="Permissions-Policy"
+      content="autoplay=*, fullscreen=*, cross-origin-isolated=*"
     />
 
     <!-- Preconnect to third-party origins for better performance -->
     <link rel="preconnect" href="https://api.leadconnectorhq.com" />
     <link rel="preconnect" href="https://link.msgsndr.com" />
     <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
-
+    <link rel="dns-prefetch" href="https://event.webinarjam.com" />
     <!-- Preload Critical Resources -->
     <link rel="preload" href="../assets/css/base.css" as="style" />
     <link rel="preload" href="../assets/css/flipfixprofit.css" as="style" />
@@ -149,33 +155,9 @@
               <div class="loading-spinner"></div>
               <p>Please accept cookies to load the form</p>
             </div>
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/form/o1BMyrgvIR7zUg4daTCg"
-              style="
-                width: 800px;
-                max-width: 100%;
-                height: 100%;
-                border: none;
-                border-radius: 3px;
-                opacity: 0;
-                transition: opacity 0.5s ease-in-out;
-              "
-              id="inline-o1BMyrgvIR7zUg4daTCg"
-              data-layout="{'id':'INLINE'}"
-              data-trigger-type="alwaysShow"
-              data-trigger-value=""
-              data-activation-type="alwaysActivated"
-              data-activation-value=""
-              data-deactivation-type="neverDeactivate"
-              data-deactivation-value=""
-              data-form-name="Proptix Free Rego Form"
-              data-height="650"
-              data-layout-iframe-id="inline-o1BMyrgvIR7zUg4daTCg"
-              data-form-id="o1BMyrgvIR7zUg4daTCg"
-              title="Proptix Free Rego Form"
-              loading="lazy"
-            >
-            </iframe>
+            <div class="wj-embed-wrapper" data-webinar-hash="27nw0f70">
+              <script src="https://event.webinarjam.com/register/27nw0f70/embed-form?formButtonText=Register&formAccentColor=%23592e83&formAccentOpacity=1&formBgColor=%23ffffff&formBgOpacity=1"></script>
+            </div>
           </div>
         </div>
       </section>
