@@ -57,6 +57,10 @@
   font-weight: 600;
 }
 
+span.bold {
+  font-weight: 600;
+}
+
 /* Contact Information */
 .privacy-contact {
   background: var(--color-primary);
