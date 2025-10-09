@@ -1,7 +1,7 @@
 // Delayed content loading functionality
 document.addEventListener("DOMContentLoaded", function () {
   // Configuration
-  const DELAY_TIME = 2.5 * 60 * 10; // 2.5 minutes in milliseconds
+  const DELAY_TIME = 2.5 * 60 * 1000; // 2.5 minutes in milliseconds
   const VIDEO_DELAY_TIME = 2 * 60 * 1000; // 2 minutes of video playback
   let contentLoaded = false;
   let videoPlayTime = 0;
