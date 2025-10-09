@@ -777,6 +777,9 @@
           </svg>
         </button>
         <div class="video-modal-iframe-wrapper">
+          <div class="video-loading-spinner" id="video-loading">
+            <div class="spinner"></div>
+          </div>
           <div style="padding: 56.25% 0 0 0; position: relative">
             <iframe
               id="vimeo-iframe"
@@ -791,6 +794,8 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+                opacity: 0;
+                transition: opacity 0.3s ease;
               "
               title="Flip180 Product Page Video"
             ></iframe>

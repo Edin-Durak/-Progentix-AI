@@ -178,15 +178,52 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalClose = document.querySelector(".video-modal-close");
   const modalOverlay = document.querySelector(".video-modal-overlay");
   const vimeoIframe = document.getElementById("vimeo-iframe");
+  const loadingSpinner = document.getElementById("video-loading");
 
   if (!videoThumbnail || !videoModal || !vimeoIframe) return;
 
+  let vimeoPlayer = null;
+
   // Open modal and load video
   function openVideoModal() {
+    // Show loading spinner
+    if (loadingSpinner) {
+      loadingSpinner.classList.remove("hidden");
+    }
+
     // Load iframe src from data-src
     const videoSrc = vimeoIframe.getAttribute("data-src");
     if (videoSrc && !vimeoIframe.getAttribute("src")) {
       vimeoIframe.setAttribute("src", videoSrc);
+
+      // Initialize Vimeo player and listen for ready event
+      setTimeout(() => {
+        if (typeof Vimeo !== "undefined") {
+          vimeoPlayer = new Vimeo.Player(vimeoIframe);
+
+          vimeoPlayer.on("loaded", () => {
+            // Hide spinner and show iframe when video is loaded
+            if (loadingSpinner) {
+              loadingSpinner.classList.add("hidden");
+            }
+            vimeoIframe.style.opacity = "1";
+          });
+        } else {
+          // Fallback: hide spinner after 2 seconds if Vimeo API not available
+          setTimeout(() => {
+            if (loadingSpinner) {
+              loadingSpinner.classList.add("hidden");
+            }
+            vimeoIframe.style.opacity = "1";
+          }, 2000);
+        }
+      }, 100);
+    } else {
+      // Video already loaded, hide spinner immediately
+      if (loadingSpinner) {
+        loadingSpinner.classList.add("hidden");
+      }
+      vimeoIframe.style.opacity = "1";
     }
 
     videoModal.classList.add("active");
@@ -199,6 +236,12 @@ document.addEventListener("DOMContentLoaded", function () {
     videoModal.classList.remove("active");
     videoModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+
+    // Reset iframe opacity and show spinner for next time
+    vimeoIframe.style.opacity = "0";
+    if (loadingSpinner) {
+      loadingSpinner.classList.remove("hidden");
+    }
 
     // Stop video by removing and re-adding iframe src
     const currentSrc = vimeoIframe.getAttribute("src");
