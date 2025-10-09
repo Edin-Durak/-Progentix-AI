@@ -34,7 +34,7 @@
 
   .hero-inner-video {
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow: hidden;
     box-shadow: var(--shadow-md);
   }
@@ -42,7 +42,7 @@
   .video-thumbnail-wrapper {
     position: relative;
     cursor: pointer;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow: hidden;
     transition: transform 0.3s ease;
   }
