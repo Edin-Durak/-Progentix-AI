@@ -55,7 +55,7 @@
     <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="frame-src 'self' https://api.leadconnectorhq.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com; connect-src 'self' https://api.leadconnectorhq.com;"
+      content="frame-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com; script-src 'self' 'unsafe-inline' https://link.msgsndr.com https://player.vimeo.com; connect-src 'self' https://api.leadconnectorhq.com https://player.vimeo.com;"
     />
 
     <!-- Preload Critical Resources -->
@@ -115,22 +115,33 @@
             <a href="#pricing" class="btn btn-primary">Join Now</a>
           </div>
           <div class="hero-inner-video">
-            <video
-              class="video-background-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              poster="../assets/img/real-estate-explorer-demo-thumbnail.webp"
-              preload="metadata"
-              width="460px"
-            >
-              <!-- Optimized video source -->
-              <source
-                src="../assets/videos/real-estate-explorer-demo-video.mp4"
-                type="video/mp4"
+            <div class="video-thumbnail-wrapper" id="video-thumbnail">
+              <img
+                src="../assets/img/flip180-thumbnail-image.webp"
+                alt="Flip180 Demo Video"
+                width="460"
+                height="259"
+                loading="eager"
+                decoding="async"
               />
-            </video>
+              <button class="play-button" aria-label="Play video">
+                <svg
+                  width="80"
+                  height="80"
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="40" cy="40" r="40" fill="#592E83" opacity="0.9" />
+                  <path
+                    d="M32 26L56 40L32 54V26Z"
+                    fill="white"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -745,6 +756,50 @@
       </div>
     </footer>
 
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal" aria-hidden="true">
+      <div class="video-modal-overlay"></div>
+      <div class="video-modal-content">
+        <button class="video-modal-close" aria-label="Close video">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M24 8L8 24M8 8L24 24"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <div class="video-modal-iframe-wrapper">
+          <div style="padding: 56.25% 0 0 0; position: relative">
+            <iframe
+              id="vimeo-iframe"
+              src=""
+              data-src="https://player.vimeo.com/video/1125743067?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              "
+              title="Flip180 Product Page Video"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="../assets/js/flip180.js" defer></script>
   </body>
 </html>

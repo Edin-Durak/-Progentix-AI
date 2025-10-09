@@ -171,6 +171,56 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Video modal functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const videoThumbnail = document.getElementById("video-thumbnail");
+  const videoModal = document.getElementById("video-modal");
+  const modalClose = document.querySelector(".video-modal-close");
+  const modalOverlay = document.querySelector(".video-modal-overlay");
+  const vimeoIframe = document.getElementById("vimeo-iframe");
+
+  if (!videoThumbnail || !videoModal || !vimeoIframe) return;
+
+  // Open modal and load video
+  function openVideoModal() {
+    // Load iframe src from data-src
+    const videoSrc = vimeoIframe.getAttribute("data-src");
+    if (videoSrc && !vimeoIframe.getAttribute("src")) {
+      vimeoIframe.setAttribute("src", videoSrc);
+    }
+
+    videoModal.classList.add("active");
+    videoModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  // Close modal and stop video
+  function closeVideoModal() {
+    videoModal.classList.remove("active");
+    videoModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    // Stop video by removing and re-adding iframe src
+    const currentSrc = vimeoIframe.getAttribute("src");
+    vimeoIframe.setAttribute("src", "");
+    setTimeout(() => {
+      vimeoIframe.setAttribute("data-src", currentSrc);
+    }, 300);
+  }
+
+  // Event listeners
+  videoThumbnail.addEventListener("click", openVideoModal);
+  modalClose.addEventListener("click", closeVideoModal);
+  modalOverlay.addEventListener("click", closeVideoModal);
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && videoModal.classList.contains("active")) {
+      closeVideoModal();
+    }
+  });
+});
+
 // Cookie consent functionality
 document.addEventListener("DOMContentLoaded", function () {
   const cookieConsent = document.getElementById("cookie-consent");
