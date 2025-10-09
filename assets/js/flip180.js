@@ -24,10 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(
       ".proptix-way-section h2, .proptix-way-section .comparison-table,.proptix-way-section .btn-primary"
     ),
-    // Questions section
-    ...document.querySelectorAll(
-      ".questions-section h2, .questions-section p, .questions-section .btn"
-    ),
   ];
 
   // Set initial state - all elements start hidden (except hero elements)
