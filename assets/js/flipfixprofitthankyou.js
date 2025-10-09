@@ -1,7 +1,7 @@
 // Delayed content loading functionality
 document.addEventListener("DOMContentLoaded", function () {
   // Configuration
-  const DELAY_TIME = 2.5 * 60 * 1000; // 2.5 minutes in milliseconds
+  const DELAY_TIME = 2.5 * 60 * 10; // 2.5 minutes in milliseconds
   const VIDEO_DELAY_TIME = 2 * 60 * 1000; // 2 minutes of video playback
   let contentLoaded = false;
   let videoPlayTime = 0;
@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ...document.querySelectorAll(".what-you-get-section"),
     // Pricing section
     ...document.querySelectorAll(".pricing-section"),
-    // Questions section
-    ...document.querySelectorAll(".questions-section"),
+
     // Footer
     ...document.querySelectorAll(".footer"),
   ];
@@ -107,10 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ),
       // Pricing section
       ...document.querySelectorAll(".pricing-section .pricing-card"),
-      // Questions section
-      ...document.querySelectorAll(
-        ".questions-section h2, .questions-section p, .questions-section .btn"
-      ),
     ];
 
     // Set initial state for scroll animation elements
