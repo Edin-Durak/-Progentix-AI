@@ -191,71 +191,97 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Lazy loading for Vimeo video
+// Video modal functionality
 document.addEventListener("DOMContentLoaded", function () {
-  const playButton = document.getElementById("play-video-btn");
-  const videoPlaceholder = document.getElementById("video-placeholder");
-  const videoIframeContainer = document.getElementById(
-    "video-iframe-container"
-  );
+  const videoThumbnail = document.getElementById("video-thumbnail");
+  const videoModal = document.getElementById("video-modal");
+  const modalClose = document.querySelector(".video-modal-close");
+  const modalOverlay = document.querySelector(".video-modal-overlay");
   const vimeoIframe = document.getElementById("vimeo-iframe");
+  const loadingSpinner = document.getElementById("video-loading");
 
-  if (!playButton || !videoPlaceholder || !videoIframeContainer || !vimeoIframe)
-    return;
+  if (!videoThumbnail || !videoModal || !vimeoIframe) return;
 
-  let vimeoLoaded = false;
-  let vimeoScriptLoaded = false;
+  let vimeoPlayer = null;
 
-  function loadVimeoVideo() {
-    if (vimeoLoaded) return;
-
-    // Load Vimeo script only when needed
-    if (!vimeoScriptLoaded) {
-      const script = document.createElement("script");
-      script.src = "https://player.vimeo.com/api/player.js";
-      script.async = true;
-      document.head.appendChild(script);
-      vimeoScriptLoaded = true;
+  // Open modal and load video
+  function openVideoModal() {
+    // Show loading spinner
+    if (loadingSpinner) {
+      loadingSpinner.classList.remove("hidden");
     }
 
-    // Load the iframe
-    const dataSrc = vimeoIframe.getAttribute("data-src");
-    if (dataSrc) {
-      vimeoIframe.setAttribute("src", dataSrc);
+    // Load iframe src from data-src
+    const videoSrc = vimeoIframe.getAttribute("data-src");
+    if (videoSrc && !vimeoIframe.getAttribute("src")) {
+      vimeoIframe.setAttribute("src", videoSrc);
+
+      // Initialize Vimeo player and listen for ready event
+      setTimeout(() => {
+        if (typeof Vimeo !== "undefined") {
+          vimeoPlayer = new Vimeo.Player(vimeoIframe);
+
+          vimeoPlayer.on("loaded", () => {
+            // Hide spinner and show iframe when video is loaded
+            if (loadingSpinner) {
+              loadingSpinner.classList.add("hidden");
+            }
+            vimeoIframe.style.opacity = "1";
+          });
+        } else {
+          // Fallback: hide spinner after 2 seconds if Vimeo API not available
+          setTimeout(() => {
+            if (loadingSpinner) {
+              loadingSpinner.classList.add("hidden");
+            }
+            vimeoIframe.style.opacity = "1";
+          }, 2000);
+        }
+      }, 100);
+    } else {
+      // Video already loaded, hide spinner immediately
+      if (loadingSpinner) {
+        loadingSpinner.classList.add("hidden");
+      }
+      vimeoIframe.style.opacity = "1";
     }
 
-    // Show iframe and hide placeholder
-    videoPlaceholder.style.display = "none";
-    videoIframeContainer.style.display = "block";
-
-    vimeoLoaded = true;
+    videoModal.classList.add("active");
+    videoModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
   }
 
-  // Load video on play button click
-  playButton.addEventListener("click", loadVimeoVideo);
+  // Close modal and stop video
+  function closeVideoModal() {
+    videoModal.classList.remove("active");
+    videoModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
 
-  // Load video on Enter key press
-  playButton.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      loadVimeoVideo();
+    // Reset iframe opacity and show spinner for next time
+    vimeoIframe.style.opacity = "0";
+    if (loadingSpinner) {
+      loadingSpinner.classList.remove("hidden");
+    }
+
+    // Stop video by removing and re-adding iframe src
+    const currentSrc = vimeoIframe.getAttribute("src");
+    vimeoIframe.setAttribute("src", "");
+    setTimeout(() => {
+      vimeoIframe.setAttribute("data-src", currentSrc);
+    }, 300);
+  }
+
+  // Event listeners
+  videoThumbnail.addEventListener("click", openVideoModal);
+  modalClose.addEventListener("click", closeVideoModal);
+  modalOverlay.addEventListener("click", closeVideoModal);
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && videoModal.classList.contains("active")) {
+      closeVideoModal();
     }
   });
-
-  // Load video when it comes into view (optional - for better UX)
-  const videoObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !vimeoLoaded) {
-          // Only load if user hasn't clicked play button yet
-          // This prevents automatic loading but keeps the option open
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  videoObserver.observe(videoPlaceholder);
 });
 
 // Button hover animations
@@ -479,3 +505,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
   calendarObserver.observe(calendarContainer);
 });
+
+// Iframe form cookie consent handling (for modal)
+function loadIframeForm() {
+  const iframe = document.querySelector("#inline-o1BMyrgvIR7zUg4daTCg");
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const cookieConsentMessage = document.getElementById(
+    "cookie-consent-message"
+  );
+  const modalLoading = document.getElementById("modal-loading");
+  const mainCookieBanner = document.getElementById("cookie-consent");
+
+  if (!iframe || !iframePlaceholder) {
+    return;
+  }
+
+  // Set cookie consent for LeadConnector and main site
+  localStorage.setItem("leadconnector-cookies-accepted", "true");
+  localStorage.setItem("cookie-consent", "accepted");
+
+  // Check if main cookie banner has 'show' class and remove it
+  if (mainCookieBanner && mainCookieBanner.classList.contains("show")) {
+    mainCookieBanner.classList.remove("show");
+    mainCookieBanner.setAttribute("aria-hidden", "true");
+  }
+
+  // Hide cookie consent message and show loading
+  if (cookieConsentMessage) {
+    cookieConsentMessage.style.display = "none";
+  }
+  if (modalLoading) {
+    modalLoading.style.display = "flex";
+  }
+
+  // Load iframe
+  const dataSrc = iframe.getAttribute("data-src");
+  if (dataSrc) {
+    iframe.setAttribute("src", dataSrc);
+  }
+
+  // Load third-party script
+  const script = document.createElement("script");
+  script.src = "https://link.msgsndr.com/js/form_embed.js";
+  script.async = true;
+  document.head.appendChild(script);
+
+  // Wait 2 seconds, then hide loading and show iframe
+  setTimeout(() => {
+    if (modalLoading) {
+      modalLoading.style.display = "none";
+    }
+    if (iframePlaceholder) {
+      iframePlaceholder.classList.add("hidden");
+    }
+    // Fade in the iframe
+    iframe.style.opacity = "1";
+  }, 2000);
+}
+
+function hideIframePlaceholder() {
+  const iframePlaceholder = document.getElementById("iframe-placeholder");
+  const modalOverlay = document.getElementById("modal-overlay");
+  const mainCookieBanner = document.getElementById("cookie-consent");
+
+  if (iframePlaceholder) {
+    iframePlaceholder.classList.add("hidden");
+  }
+
+  // Check if main cookie banner doesn't have 'show' class and add it
+  if (mainCookieBanner && !mainCookieBanner.classList.contains("show")) {
+    mainCookieBanner.classList.add("show");
+    mainCookieBanner.setAttribute("aria-hidden", "false");
+  }
+
+  // Close the modal when user declines
+  if (modalOverlay) {
+    modalOverlay.classList.remove("active");
+    modalOverlay.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = ""; // Restore scroll
+  }
+}
