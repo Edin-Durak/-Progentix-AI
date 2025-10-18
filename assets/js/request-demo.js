@@ -4,17 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const animateElements = [
     // Hero section
     ...document.querySelectorAll(".hero h1, .hero p"),
-    // Video sections
-    ...document.querySelectorAll(
-      ".video-section p, .video-section h2, .video-section .btn"
-    ),
+
     // Calendar section
     ...document.querySelectorAll(
       ".calendar-section h2, .calendar-section p, .calendar-container"
-    ),
-    // Questions section
-    ...document.querySelectorAll(
-      ".questions-section h2, .questions-section p, .questions-cta"
     ),
   ];
 
@@ -54,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Simple reveal animation for hero and first video section on load
   const heroAndFirstVideoElements = [
     ...document.querySelectorAll(".hero h1, .hero p"),
-    ...document.querySelectorAll(".video-section .video-background-container"),
   ];
 
   // Animate hero and first video elements on load
@@ -187,99 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
       closeModal();
-    }
-  });
-});
-
-// Video modal functionality
-document.addEventListener("DOMContentLoaded", function () {
-  const videoThumbnail = document.getElementById("video-thumbnail");
-  const videoModal = document.getElementById("video-modal");
-  const modalClose = document.querySelector(".video-modal-close");
-  const modalOverlay = document.querySelector(".video-modal-overlay");
-  const vimeoIframe = document.getElementById("vimeo-iframe");
-  const loadingSpinner = document.getElementById("video-loading");
-
-  if (!videoThumbnail || !videoModal || !vimeoIframe) return;
-
-  let vimeoPlayer = null;
-
-  // Open modal and load video
-  function openVideoModal() {
-    // Show loading spinner
-    if (loadingSpinner) {
-      loadingSpinner.classList.remove("hidden");
-    }
-
-    // Load iframe src from data-src
-    const videoSrc = vimeoIframe.getAttribute("data-src");
-    if (videoSrc && !vimeoIframe.getAttribute("src")) {
-      vimeoIframe.setAttribute("src", videoSrc);
-
-      // Initialize Vimeo player and listen for ready event
-      setTimeout(() => {
-        if (typeof Vimeo !== "undefined") {
-          vimeoPlayer = new Vimeo.Player(vimeoIframe);
-
-          vimeoPlayer.on("loaded", () => {
-            // Hide spinner and show iframe when video is loaded
-            if (loadingSpinner) {
-              loadingSpinner.classList.add("hidden");
-            }
-            vimeoIframe.style.opacity = "1";
-          });
-        } else {
-          // Fallback: hide spinner after 2 seconds if Vimeo API not available
-          setTimeout(() => {
-            if (loadingSpinner) {
-              loadingSpinner.classList.add("hidden");
-            }
-            vimeoIframe.style.opacity = "1";
-          }, 2000);
-        }
-      }, 100);
-    } else {
-      // Video already loaded, hide spinner immediately
-      if (loadingSpinner) {
-        loadingSpinner.classList.add("hidden");
-      }
-      vimeoIframe.style.opacity = "1";
-    }
-
-    videoModal.classList.add("active");
-    videoModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
-
-  // Close modal and stop video
-  function closeVideoModal() {
-    videoModal.classList.remove("active");
-    videoModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-
-    // Reset iframe opacity and show spinner for next time
-    vimeoIframe.style.opacity = "0";
-    if (loadingSpinner) {
-      loadingSpinner.classList.remove("hidden");
-    }
-
-    // Stop video by removing and re-adding iframe src
-    const currentSrc = vimeoIframe.getAttribute("src");
-    vimeoIframe.setAttribute("src", "");
-    setTimeout(() => {
-      vimeoIframe.setAttribute("data-src", currentSrc);
-    }, 300);
-  }
-
-  // Event listeners
-  videoThumbnail.addEventListener("click", openVideoModal);
-  modalClose.addEventListener("click", closeVideoModal);
-  modalOverlay.addEventListener("click", closeVideoModal);
-
-  // Close on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && videoModal.classList.contains("active")) {
-      closeVideoModal();
     }
   });
 });
